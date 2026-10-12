@@ -2,7 +2,7 @@
 
 公开论文精选：视频生成、交互 Avatar、具身与世界模型。每篇附可折叠中文简介与一手来源。
 
-**27 篇论文** · [在线阅读（支持快捷键）](https://ripemangobox.github.io/research-paper-watch/) · [下载离线阅读器 ZIP](https://ripemangobox.github.io/research-paper-watch/research-paper-watch.zip) · [唯一数据源](data/papers.json) · [导入与任务接入](docs/INTEGRATION.md)
+**28 篇论文** · [在线阅读（支持快捷键）](https://ripemangobox.github.io/research-paper-watch/) · [下载离线阅读器 ZIP](https://ripemangobox.github.io/research-paper-watch/research-paper-watch.zip) · [唯一数据源](data/papers.json) · [导入与任务接入](docs/INTEGRATION.md)
 
 在线阅读页直接支持搜索、分类、E 全部展开、C 全部收起。离线 ZIP 解压后双击 index.html，无需安装或启动服务器。GitHub README 不运行自定义脚本：可点击简介，或 Tab 聚焦后按 Enter / 空格展开收起；E / C 请使用在线阅读页。
 
@@ -11,7 +11,7 @@
 ## 目录
 
 - [视频生成基础](#视频生成基础) · 3
-- [少步蒸馏](#少步蒸馏) · 3
+- [少步蒸馏](#少步蒸馏) · 4
 - [交互长视频](#交互长视频) · 7
 - [流式系统](#流式系统) · 2
 - [具身与世界模型](#具身与世界模型) · 11
@@ -120,6 +120,23 @@
   - **局限**：少步生成仍依赖教师质量；公开仓库的示例训练不等同于论文全部实验。
 
   来源：<a href="https://arxiv.org/abs/2412.07772">[1]</a> · <a href="https://causvid.github.io/">[2]</a> · <a href="https://github.com/tianweiy/CausVid">[3]</a> · <a href="https://huggingface.co/tianweiy/CausVid/tree/main/autoregressive_checkpoint">[4]</a>
+  核验：2026-10-12
+
+  </details>
+
++ [VideoLCM: Video Latent Consistency Model](<https://arxiv.org/abs/2312.09109>)<br>
+  [![Star](https://img.shields.io/github/stars/ali-vilab/VGen.svg?style=social&label=Star)](<https://github.com/ali-vilab/VGen>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2312.09109>)
+  <br>2023-12-14 · 一致性蒸馏 / 少步采样 / 文生视频 / 潜空间
+
+  <details>
+  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+
+  - **问题**：视频扩散多步采样成本高。
+  - **方法**：在潜空间用冻结教师的DDIM轨迹配对和EMA学生目标做一致性蒸馏。
+  - **价值**：复用预训练模型，将文生视频压缩至约4–6步，并支持组合条件生成。
+  - **局限**：依赖强教师与匹配数据，仍需微调，论文尚未实现实时生成。
+
+  来源：<a href="https://arxiv.org/abs/2312.09109">[1]</a> · <a href="https://arxiv.org/html/2312.09109">[2]</a> · <a href="https://github.com/ali-vilab/VGen">[3]</a>
   核验：2026-10-12
 
   </details>

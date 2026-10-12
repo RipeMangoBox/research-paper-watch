@@ -956,6 +956,44 @@
       "discovery_sources": [
         "vigen-seed"
       ]
+    },
+    {
+      "title": "VideoLCM: Video Latent Consistency Model",
+      "short_name": "VideoLCM",
+      "published": "2023-12-14",
+      "category": "少步蒸馏",
+      "tags": [
+        "一致性蒸馏",
+        "少步采样",
+        "文生视频",
+        "潜空间"
+      ],
+      "doi": "10.48550/arxiv.2312.09109",
+      "arxiv_id": "2312.09109",
+      "paper_url": "https://arxiv.org/abs/2312.09109",
+      "id": "arxiv:2312.09109",
+      "links": {
+        "project": null,
+        "code": "https://github.com/ali-vilab/VGen",
+        "weights": null
+      },
+      "summary": {
+        "problem": "视频扩散多步采样成本高。",
+        "method": "在潜空间用冻结教师的DDIM轨迹配对和EMA学生目标做一致性蒸馏。",
+        "value": "复用预训练模型，将文生视频压缩至约4–6步，并支持组合条件生成。",
+        "limitation": "依赖强教师与匹配数据，仍需微调，论文尚未实现实时生成。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2312.09109",
+        "https://arxiv.org/html/2312.09109",
+        "https://github.com/ali-vilab/VGen"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "video-avatar"
+      ]
     }
   ]
 }
