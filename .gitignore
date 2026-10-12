@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.DS_Store
+.watch.lock
+incoming/*
+!incoming/.gitkeep
+*.pdf
+.env*
+node_modules/
+test-results/
