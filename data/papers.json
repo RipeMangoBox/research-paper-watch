@@ -2,6 +2,697 @@
   "schema_version": 1,
   "papers": [
     {
+      "title": "Dex-One2Many: Learning Dexterous Manipulation from a Single Human Demonstration",
+      "short_name": "Dex-One2Many",
+      "published": "2026-10-08",
+      "category": "具身与世界模型",
+      "tags": [
+        "具身与世界模型"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.12470",
+      "paper_url": "https://arxiv.org/abs/2610.12470",
+      "id": "arxiv:2610.12470",
+      "links": {
+        "project": "https://dex-one2many.github.io/",
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "单个人类示范难以覆盖灵巧操作所需的场景与动作变化。",
+        "method": "从视频提取场景图，构造多样仿真初态和奖励并训练强化策略。",
+        "value": "将单次示范扩展为训练任务，支持仿真到真实操作迁移。",
+        "limitation": "仍需资产、抓取及姿态准备，不代表同一策略零样本跨形态泛化。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.12470",
+        "https://dex-one2many.github.io/"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "embodied-world"
+      ]
+    },
+    {
+      "title": "DreamTrue: Action-Faithful Robot World Model with Counterfactual Post-Training",
+      "short_name": "DreamTrue",
+      "published": "2026-10-08",
+      "category": "具身与世界模型",
+      "tags": [
+        "具身与世界模型"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.12468",
+      "paper_url": "https://arxiv.org/abs/2610.12468",
+      "id": "arxiv:2610.12468",
+      "links": {
+        "project": "https://brave-eai.github.io/DreamTrue",
+        "code": "https://github.com/brave-eai/DreamTrue",
+        "weights": null
+      },
+      "summary": {
+        "problem": "机器人世界模型可能生成视觉合理却不忠实于输入动作的结果。",
+        "method": "结合多视角几何校准、缺陷奖励及反事实强化后训练。",
+        "value": "提高动作条件预测的忠实度，减少违背控制指令的幻觉。",
+        "limitation": "当前主要验证预测质量，尚不能直接推断实际策略成功率提升。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.12468",
+        "https://brave-eai.github.io/DreamTrue",
+        "https://github.com/brave-eai/DreamTrue"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "embodied-world"
+      ]
+    },
+    {
+      "title": "RoboRSI: Stable, efficient, and reusable robot self-evolution in complex real-world environments",
+      "short_name": "RoboRSI",
+      "published": "2026-10-08",
+      "category": "具身与世界模型",
+      "tags": [
+        "具身与世界模型"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.12424",
+      "paper_url": "https://arxiv.org/abs/2610.12424",
+      "id": "arxiv:2610.12424",
+      "links": {
+        "project": "https://lab.noematrix.ai/blog/2-roborsi",
+        "code": "https://github.com/nssmd/RoboRSI",
+        "weights": null
+      },
+      "summary": {
+        "problem": "复杂真实环境中的机器人需从失败中修正程序并复用经验。",
+        "method": "通过执行反馈迭代代码与技能，在连续任务中积累可用方案。",
+        "value": "展示真实机器人自我改进系统的工程路径和案例。",
+        "limitation": "运行期间持续开发且存在人工协助，不能视作冻结策略的自主性评测。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.12424",
+        "https://github.com/nssmd/RoboRSI",
+        "https://lab.noematrix.ai/blog/2-roborsi"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "embodied-world"
+      ]
+    },
+    {
+      "title": "LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild",
+      "short_name": "LiteNWM",
+      "published": "2026-10-08",
+      "category": "具身与世界模型",
+      "tags": [
+        "具身与世界模型"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.12368",
+      "paper_url": "https://arxiv.org/abs/2610.12368",
+      "id": "arxiv:2610.12368",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "机载导航需评估多个候选路径，但世界模型计算预算有限。",
+        "method": "共享视觉特征编码，用多时域潜在预测评估候选动作轨迹。",
+        "value": "降低重复编码成本，改善实地视觉导航的路径选择。",
+        "limitation": "真实测试规模较小，嵌入式推理延迟仍限制快速闭环应用。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.12368"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "embodied-world"
+      ]
+    },
+    {
+      "title": "PLaW-VLA: Predictive Latent World Modeling for Vision-Language-Action Policies",
+      "short_name": "PLaW-VLA",
+      "published": "2026-10-08",
+      "category": "具身与世界模型",
+      "tags": [
+        "具身与世界模型"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.12285",
+      "paper_url": "https://arxiv.org/abs/2610.12285",
+      "id": "arxiv:2610.12285",
+      "links": {
+        "project": "https://rainyrobo.github.io/PLaW-VLA",
+        "code": "https://github.com/RainyRobo/PLaW-VLA",
+        "weights": null
+      },
+      "summary": {
+        "problem": "视觉语言动作策略需要提前感知未来，当前观测不足以规划。",
+        "method": "在冻结视觉编码器空间预测未来状态，由动作专家联合读取。",
+        "value": "将潜在世界预测接入策略训练，实验显示控制表现改善。",
+        "limitation": "官方预训练权重仍待发布，额外模块耗时不等于端到端延迟。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.12285",
+        "https://github.com/RainyRobo/PLaW-VLA",
+        "https://rainyrobo.github.io/PLaW-VLA"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "embodied-world"
+      ]
+    },
+    {
+      "title": "RESETTLE: Robotic Recovery through Disagreement-Triggered Retrieval and Efficient Corrective Control",
+      "short_name": "RESETTLE",
+      "published": "2026-10-08",
+      "category": "具身与世界模型",
+      "tags": [
+        "具身与世界模型"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.12185",
+      "paper_url": "https://arxiv.org/abs/2610.12185",
+      "id": "arxiv:2610.12185",
+      "links": {
+        "project": null,
+        "code": "https://github.com/JIA-Lab-research/RESETTLE",
+        "weights": null
+      },
+      "summary": {
+        "problem": "机器人策略遇到失误后缺少可靠的触发机制与恢复控制。",
+        "method": "以动作采样分歧触发成功经验检索，并执行带约束的纠正动作。",
+        "value": "为既有策略增加恢复能力，减少偏离后的连续失败。",
+        "limitation": "一致但错误的预测可能漏检，模块计时不等于完整系统延迟。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.12185",
+        "https://github.com/JIA-Lab-research/RESETTLE"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "embodied-world"
+      ]
+    },
+    {
+      "title": "Connected Self Forcing: Beyond Local Learning in Video Autoregression",
+      "short_name": "Connected Self Forcing",
+      "published": "2026-10-08",
+      "category": "视频生成基础",
+      "tags": [
+        "视频生成基础"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.12156",
+      "paper_url": "https://arxiv.org/abs/2610.12156",
+      "id": "arxiv:2610.12156",
+      "links": {
+        "project": "https://eastbeanzhang.github.io/CSF",
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "局部自回归训练截断历史梯度，早期生成难获后续误差信号。",
+        "method": "使用快捷梯度重放连接历史潜变量及注意力缓存。",
+        "value": "在不增加推理开销的情况下改善长视频训练与稳定性。",
+        "limitation": "训练需要额外重放成本，长时稳定与运动丰富度仍需权衡。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.12156",
+        "https://eastbeanzhang.github.io/CSF"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "video-avatar"
+      ]
+    },
+    {
+      "title": "UNITAS: A 3D-Native World Action Model for Embodied Manipulation",
+      "short_name": "UNITAS",
+      "published": "2026-10-08",
+      "category": "具身与世界模型",
+      "tags": [
+        "具身与世界模型"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.12099",
+      "paper_url": "https://arxiv.org/abs/2610.12099",
+      "id": "arxiv:2610.12099",
+      "links": {
+        "project": null,
+        "code": "https://github.com/DexForce/UNITAS",
+        "weights": null
+      },
+      "summary": {
+        "problem": "二维视觉与动作表示分离，难以统一建模空间变化和控制。",
+        "method": "在统一度量空间建模三维场景与动作点轨迹，使用双专家流模型。",
+        "value": "探索三维原生世界动作建模以支持具身操作。",
+        "limitation": "世界模型带来的独立收益仍有限，完整实现的发布状态需关注。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.12099",
+        "https://github.com/DexForce/UNITAS"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "embodied-world"
+      ]
+    },
+    {
+      "title": "Memory Forcing: Attendable Mid-Horizon History for Streaming Video Generation",
+      "short_name": "Memory Forcing",
+      "published": "2026-10-08",
+      "category": "交互长视频",
+      "tags": [
+        "交互长视频"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.11756",
+      "paper_url": "https://arxiv.org/abs/2610.11756",
+      "id": "arxiv:2610.11756",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "流式视频滑动窗口会丢失中期历史，使早先内容难以延续。",
+        "method": "划分锚点、档案和工作缓存，结合历史选择与分库位置编码。",
+        "value": "在固定缓存预算下增加可访问历史并改善连续性。",
+        "limitation": "尚非语义检索或持久世界状态，视频帧率不代表生成速度。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.11756"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "interactive-video",
+        "video-avatar"
+      ]
+    },
+    {
+      "title": "RoboJEPA: Scaling Robotic Latent World Models",
+      "short_name": "RoboJEPA",
+      "published": "2026-10-07",
+      "category": "具身与世界模型",
+      "tags": [
+        "具身与世界模型"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.10515",
+      "paper_url": "https://arxiv.org/abs/2610.10515",
+      "id": "arxiv:2610.10515",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "像素世界模型规划成本高，潜空间模型的规模收益尚待检验。",
+        "method": "扩展机器人潜在预测模型，以目标图像引导闭环动作规划。",
+        "value": "展示大规模潜空间预测用于控制的潜力并优化规划计算。",
+        "limitation": "多步规划仍有明显延迟，不能直接视为实时控制方案。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.10515"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "embodied-world"
+      ]
+    },
+    {
+      "title": "SGF+: Decoupling Gradient Flows for Autoregressive Video Generation",
+      "short_name": "SGF+",
+      "published": "2026-10-07",
+      "category": "视频生成基础",
+      "tags": [
+        "视频生成基础"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.10429",
+      "paper_url": "https://arxiv.org/abs/2610.10429",
+      "id": "arxiv:2610.10429",
+      "links": {
+        "project": "https://zihan-su.github.io/self-gradient-forcing-plus",
+        "code": "https://github.com/Zihan-Su/Self_Gradient_Forcing_Plus",
+        "weights": "https://huggingface.co/ZihanSu/Self_Gradient_Forcing_Plus"
+      },
+      "summary": {
+        "problem": "自回归视频中缓存写入与当前去噪的梯度目标可能冲突。",
+        "method": "分离写入器和去噪器参数，再通过因果注意力联合训练。",
+        "value": "提高长时滚动生成的稳定性，提供可复现代码与权重。",
+        "limitation": "稳定性可能伴随动态程度降低，固定缓存仍有记忆边界。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.10429",
+        "https://github.com/Zihan-Su/Self_Gradient_Forcing_Plus",
+        "https://huggingface.co/ZihanSu/Self_Gradient_Forcing_Plus",
+        "https://zihan-su.github.io/self-gradient-forcing-plus"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "video-avatar"
+      ]
+    },
+    {
+      "title": "Real-Time Joint Audio-Video Generation by Parallel Adapter Composition",
+      "short_name": "Parallel Adapter Composition",
+      "published": "2026-10-07",
+      "category": "流式系统",
+      "tags": [
+        "流式系统"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.10343",
+      "paper_url": "https://arxiv.org/abs/2610.10343",
+      "id": "arxiv:2610.10343",
+      "links": {
+        "project": "https://pac-demo-2027.github.io/demo",
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "联合音视频生成难以同时获得跨模态同步与少步推理。",
+        "method": "冻结主干，将因果音视频适配器与少步适配器并行组合。",
+        "value": "减少联合重训需求，展示流式音视频生成能力。",
+        "limitation": "吞吐依赖多卡，首帧延迟和口型漂移仍影响交互体验。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.10343",
+        "https://pac-demo-2027.github.io/demo"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "interactive-video",
+        "video-avatar"
+      ]
+    },
+    {
+      "title": "DepthWorld: 3D World Model for Robot Manipulation",
+      "short_name": "DepthWorld",
+      "published": "2026-10-06",
+      "category": "具身与世界模型",
+      "tags": [
+        "具身与世界模型"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.08780",
+      "paper_url": "https://arxiv.org/abs/2610.08780",
+      "id": "arxiv:2610.08780",
+      "links": {
+        "project": "https://jaibardhan.com/depthworld",
+        "code": "https://github.com/Jai2500/depthworld",
+        "weights": "https://huggingface.co/jaibrdhn/depthworld"
+      },
+      "summary": {
+        "problem": "机器人视频世界模型容易产生跨视角不一致的三维几何。",
+        "method": "重新校准多视角数据，联合预测动作条件下的彩色图像与深度。",
+        "value": "改善空间一致性，开放模型权重与标定资源供复现。",
+        "limitation": "预测质量提升尚不等于策略控制收益，部分数据需申请访问。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.08780",
+        "https://github.com/Jai2500/depthworld",
+        "https://huggingface.co/jaibrdhn/depthworld",
+        "https://jaibardhan.com/depthworld"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "embodied-world"
+      ]
+    },
+    {
+      "title": "OpenWAM: An Open Framework for Composable World-Action Models",
+      "short_name": "OpenWAM",
+      "published": "2026-10-06",
+      "category": "具身与世界模型",
+      "tags": [
+        "具身与世界模型"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.07922",
+      "paper_url": "https://arxiv.org/abs/2610.07922",
+      "id": "arxiv:2610.07922",
+      "links": {
+        "project": "https://openwam.stanford.edu/",
+        "code": "https://github.com/OpenWAM/OpenWAM",
+        "weights": "https://huggingface.co/OpenWAM-Stanford/OpenWAM-Pretraining"
+      },
+      "summary": {
+        "problem": "世界模型与动作策略常各自训练，组件难以跨任务组合复用。",
+        "method": "共享因果视频骨干，比较视频动作生成顺序并组合正逆动力学。",
+        "value": "提供统一框架和反事实数据训练路径，便于研究组件复用。",
+        "limitation": "数据量差异影响归因，仿真复用不等于真实机器人零样本迁移。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.07922",
+        "https://github.com/OpenWAM/OpenWAM",
+        "https://huggingface.co/OpenWAM-Stanford/OpenWAM-Pretraining",
+        "https://openwam.stanford.edu/"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "embodied-world"
+      ]
+    },
+    {
+      "title": "Keepsake: Selective Spatial Memory for Long-Horizon Video Generation",
+      "short_name": "Keepsake",
+      "published": "2026-10-05",
+      "category": "交互长视频",
+      "tags": [
+        "交互长视频"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.06588",
+      "paper_url": "https://arxiv.org/abs/2610.06588",
+      "id": "arxiv:2610.06588",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "长视频空间记忆随历史增长而膨胀，重复视角挤占有限缓存。",
+        "method": "用姿态与外观图选择固定容量记忆，淘汰可被替代的观测。",
+        "value": "无需重训生成器即可改善长时间空间一致性。",
+        "limitation": "测试轨迹规模有限，尚不能保证动态场景状态正确。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.06588"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "video-avatar"
+      ]
+    },
+    {
+      "title": "PixReenact: Pixel-Conditioned Causal Video Diffusion for Streaming Head-Avatar Reenactment",
+      "short_name": "PixReenact",
+      "published": "2026-10-04",
+      "category": "交互 Avatar",
+      "tags": [
+        "交互 Avatar"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.05233",
+      "paper_url": "https://arxiv.org/abs/2610.05233",
+      "id": "arxiv:2610.05233",
+      "links": {
+        "project": "https://gavriel-habib.github.io/pixreenact",
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "流式头像重演需同时维持身份和跟随驱动视频的头部运动。",
+        "method": "采用像素条件因果扩散、跨身份伪监督及双教师蒸馏。",
+        "value": "以少步分块生成支持低延迟头部头像重演。",
+        "limitation": "研究范围主要是头部，不等于全身控制或对话交互。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.05233",
+        "https://gavriel-habib.github.io/pixreenact"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "interactive-video",
+        "video-avatar"
+      ]
+    },
+    {
+      "title": "LoGo: Local-Global Rewards for Consistent Long-Horizon Video Generation",
+      "short_name": "LoGo",
+      "published": "2026-10-02",
+      "category": "交互长视频",
+      "tags": [
+        "交互长视频"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.03636",
+      "paper_url": "https://arxiv.org/abs/2610.03636",
+      "id": "arxiv:2610.03636",
+      "links": {
+        "project": "https://ziqi-ma.github.io/logo-website",
+        "code": "https://github.com/ziqi-ma/logo",
+        "weights": "https://huggingface.co/ziqima/LoGo"
+      },
+      "summary": {
+        "problem": "长时视频的局部画面质量与全局三维一致性往往难以兼顾。",
+        "method": "组合局部与全局几何奖励，对视频生成模型进行后训练。",
+        "value": "改善相机运动下场景一致性，并发布训练代码与适配器。",
+        "limitation": "证据主要来自静态场景，不能外推至动态人体或复杂交互。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.03636",
+        "https://github.com/ziqi-ma/logo",
+        "https://huggingface.co/ziqima/LoGo",
+        "https://ziqi-ma.github.io/logo-website"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "interactive-video"
+      ]
+    },
+    {
+      "title": "Weave Forcing: Compositional Memory Routing for Interactive Long Video Generation",
+      "short_name": "Weave Forcing",
+      "published": "2026-10-02",
+      "category": "交互长视频",
+      "tags": [
+        "交互长视频"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.03510",
+      "paper_url": "https://arxiv.org/abs/2610.03510",
+      "id": "arxiv:2610.03510",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "交互长视频需要重组历史人物与背景，单一记忆难以匹配。",
+        "method": "以语义槽和区域掩码路由历史缓存，并自适应调整位置编码。",
+        "value": "支持跨镜头组合记忆，增强人物与场景延续性。",
+        "limitation": "端到端实时性与复杂动态交互仍缺充分验证。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.03510"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "video-avatar"
+      ]
+    },
+    {
+      "title": "PointWAM: 3D World Action Modeling for Dexterous Robotic Manipulation",
+      "short_name": "PointWAM",
+      "published": "2026-10-02",
+      "category": "具身与世界模型",
+      "tags": [
+        "具身与世界模型"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.02840",
+      "paper_url": "https://arxiv.org/abs/2610.02840",
+      "id": "arxiv:2610.02840",
+      "links": {
+        "project": "https://chrockey.github.io/PointWAM",
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "灵巧操作需要理解三维场景变化，单纯动作模仿难以迁移。",
+        "method": "联合预测场景点与手部关键点，再将动作重定向到机器人。",
+        "value": "利用人类视频预训练和三维监督连接世界预测与操作。",
+        "limitation": "依赖重定向及场景准备，精细接触任务的成功率仍有限。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.02840",
+        "https://chrockey.github.io/PointWAM"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "embodied-world"
+      ]
+    },
+    {
+      "title": "MosaiChunk: Compositing Spatio-Temporal Memory for Autoregressive Video Generation",
+      "short_name": "MosaiChunk",
+      "published": "2026-10-01",
+      "category": "交互长视频",
+      "tags": [
+        "交互长视频"
+      ],
+      "doi": null,
+      "arxiv_id": "2610.02153",
+      "paper_url": "https://arxiv.org/abs/2610.02153",
+      "id": "arxiv:2610.02153",
+      "links": {
+        "project": "https://mosaichunk.github.io/",
+        "code": "https://github.com/mosaichunk/MosaiChunk",
+        "weights": "https://huggingface.co/mosaichunk/MosaiChunk"
+      },
+      "summary": {
+        "problem": "自回归视频有限缓存难以记住离开视野后再次出现的场景。",
+        "method": "冻结生成器，训练轻量路由器组合历史时空片段的注意力缓存。",
+        "value": "在固定活动缓存下增强重访一致性，支持长时记忆检索。",
+        "limitation": "主机历史存储仍会增长，旧记忆与动态状态冲突尚未解决。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2610.02153",
+        "https://github.com/mosaichunk/MosaiChunk",
+        "https://huggingface.co/mosaichunk/MosaiChunk",
+        "https://mosaichunk.github.io/"
+      ],
+      "verified_at": "2026-10-12",
+      "first_seen": "2026-10-12",
+      "last_seen": "2026-10-12",
+      "discovery_sources": [
+        "interactive-video"
+      ]
+    },
+    {
       "title": "Causal Forcing: Autoregressive Diffusion Distillation Done Right for High-Quality Real-Time Interactive Video Generation",
       "short_name": "Causal Forcing",
       "published": "2026-02-02",
