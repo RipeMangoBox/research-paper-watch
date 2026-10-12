@@ -8,3 +8,4 @@ incoming/*
 .env*
 node_modules/
 test-results/
+dist/*.zip

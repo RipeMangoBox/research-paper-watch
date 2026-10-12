@@ -2,7 +2,7 @@
 
 `data/papers.json` 是唯一论文数据源。`README.md` 与 `dist/index.html` 是确定性生成结果，不要手改。阅读器内嵌样式、脚本与论文内容，可直接离线打开。
 
-本仓库没有创建新定时任务，也没有安装 GitHub Actions 计划。既有任务仍需通过支持的任务管理入口接入；在未取得真实任务 ID、完整原提示词、时区和执行环境前，不应宣称每日同步已经生效。
+已接通 main 推送后的 GitHub Pages 自动部署，未创建新的研究日程。三个研究任务运行在云电脑；截至 2026-10-12，尚未通过云端调度管理入口完成合并，也未验证云端研究结果自动写入仓库。网页部署成功不代表每日论文采集已生效。
 
 ## 本地使用
 
@@ -18,7 +18,11 @@ node --test tests/reader.test.cjs
 
 直接用浏览器打开 `dist/index.html`。E 全部展开，C 全部收起；搜索框、选择框、可编辑内容、输入法组合期间和任何修饰键组合均不触发快捷键。可关闭快捷键，所有操作均有可聚焦按钮。筛选不改变展开状态；全部展开/收起包括当前被筛选隐藏的论文。
 
-GitHub README 使用每篇 `<details>` 折叠；批量快捷键由 HTML 阅读器提供。本项目没有自动启用 Pages。
+GitHub README 使用每篇 `<details>` 折叠，支持 Tab 聚焦后 Enter / 空格切换；GitHub 不执行 README 自定义 JavaScript，E / C 在[在线阅读页](https://ripemangobox.github.io/research-paper-watch/)中提供。标题、arXiv / Website 与 Star 徽章采用 Awesome-Video-Diffusion 的条目风格；Star 指向各论文的官方代码仓库。
+
+[离线 ZIP](https://ripemangobox.github.io/research-paper-watch/research-paper-watch.zip)解压后直接打开 index.html，也可在在线页右上角下载单个 HTML。正文、搜索、折叠均可离线使用；Star 徽章联网显示。不再使用 Raw HTML 作为下载入口。
+
+`.github/workflows/pages.yml` 在 main 推送后运行验证和测试，再通过 `scripts/package_reader.py` 打包 ZIP 并部署 `dist/`。ZIP 只含 index.html。构建任务仅读取仓库；部署任务使用 GitHub Pages 官方所需的 pages / id-token 权限，不授予仓库内容写入权限。
 
 ## 增量数据格式
 

@@ -94,6 +94,36 @@ class CatalogueTests(unittest.TestCase):
         self.assertIn('A &amp; B &quot;quoted&quot;', page)
         self.assertNotIn('fetch(', page)
 
+    def test_badges_and_reader_download_entry(self):
+        p = copy.deepcopy(self.seed)
+        p['links']['code'] = 'https://github.com/example/model/tree/main'
+        badges = w.paper_badges(p)
+        self.assertEqual(badges[0], ('Star', 'https://img.shields.io/github/stars/example/model.svg?style=social&label=Star', 'https://github.com/example/model'))
+        p['links']['code'] = None
+        self.assertNotIn('Star', [b[0] for b in w.paper_badges(p)])
+        p.update(arxiv_id=None)
+        self.assertIn('Paper', [b[0] for b in w.paper_badges(p)])
+        page = w.render_html([p])
+        self.assertIn('download="research-paper-watch.html"', page)
+        self.assertIn('href="./index.html"', page)
+        readme = w.render_readme([p])
+        self.assertNotIn('raw.githubusercontent.com', readme)
+        self.assertIn('research-paper-watch.zip', readme)
+        self.assertIn('+ [', readme)
+
+    def test_offline_package_contains_exact_standalone_reader(self):
+        from package_reader import package
+        from zipfile import ZipFile
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.temp_project(tmp)
+            output = package(root)
+            first = output.read_bytes()
+            with ZipFile(output) as archive:
+                self.assertEqual(archive.namelist(), ['index.html'])
+                self.assertEqual(archive.read('index.html'), (root/'dist/index.html').read_bytes())
+                self.assertIsNone(archive.testzip())
+            self.assertEqual(first, package(root).read_bytes())
+
     def temp_project(self, temp):
         root = Path(temp)
         (root/'data').mkdir(); (root/'data/papers.json').write_text(w.dump([self.seed]))

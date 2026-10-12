@@ -250,16 +250,40 @@ def esc(s):
     return html.escape(s, quote=True)
 
 
+def paper_badges(p):
+    badges = []
+    code = p['links']['code']
+    if code:
+        parsed = urlsplit(code)
+        parts = parsed.path.strip('/').split('/')
+        if parsed.hostname == 'github.com' and len(parts) >= 2:
+            repo = '/'.join(parts[:2])
+            badges.append(('Star', f'https://img.shields.io/github/stars/{quote(repo, safe="/")}.svg?style=social&label=Star', 'https://github.com/' + repo))
+        else:
+            badges.append(('Code', 'https://img.shields.io/badge/Code-181717.svg', code))
+    label = 'arXiv' if p['arxiv_id'] else 'Paper'
+    badges.append((label, f'https://img.shields.io/badge/{label}-b31b1b.svg', p['paper_url']))
+    for key, label, color in [('project', 'Website', '9cf'), ('weights', 'Weights', 'yellow')]:
+        if p['links'][key]:
+            badges.append((label, f'https://img.shields.io/badge/{label}-{color}.svg', p['links'][key]))
+    return badges
+
+
 def paper_links(p):
-    links = [('Paper', p['paper_url'])] + [(k.title(), v) for k, v in p['links'].items() if v]
-    return ' · '.join(f'<a href="{esc(u)}" rel="noopener noreferrer">{label}</a>' for label, u in links)
+    return ' '.join(f'<a href="{esc(url)}" rel="noopener noreferrer"><img src="{esc(image)}" alt="{label}" loading="lazy" height="20"></a>'
+                    for label, image, url in paper_badges(p))
+
+
+def markdown_link(label, url):
+    label = esc(label).replace('[', '&#91;').replace(']', '&#93;')
+    return f'[{label}](<{url}>)'
 
 
 def render_readme(papers):
     out = ['# Research Paper Watch', '',
            '公开论文精选：视频生成、交互 Avatar、具身与世界模型。每篇附可折叠中文简介与一手来源。', '',
-           f'**{len(papers)} 篇论文** · [下载离线阅读器](https://raw.githubusercontent.com/RipeMangoBox/research-paper-watch/main/dist/index.html) · [唯一数据源](data/papers.json) · [导入与任务接入](docs/INTEGRATION.md)', '',
-           '阅读器下载后用浏览器打开：支持搜索、分类、E 全部展开、C 全部收起，也可使用按钮。GitHub README 使用每篇原生折叠块；批量快捷键在阅读器中提供。', '',
+           f'**{len(papers)} 篇论文** · [在线阅读（支持快捷键）](https://ripemangobox.github.io/research-paper-watch/) · [下载离线阅读器 ZIP](https://ripemangobox.github.io/research-paper-watch/research-paper-watch.zip) · [唯一数据源](data/papers.json) · [导入与任务接入](docs/INTEGRATION.md)', '',
+           '在线阅读页直接支持搜索、分类、E 全部展开、C 全部收起。离线 ZIP 解压后双击 index.html，无需安装或启动服务器。GitHub README 不运行自定义脚本：可点击简介，或 Tab 聚焦后按 Enter / 空格展开收起；E / C 请使用在线阅读页。', '',
            '日期为论文首次公开日期；空链接表示尚未核实。简介中的局限包含基于公开证据的阅读边界，不代表作者自述的缺陷。', '',
            '## 目录', '']
     for category in CATEGORIES:
@@ -272,17 +296,18 @@ def render_readme(papers):
             continue
         out += ['', f'## {category}', '']
         for p in group:
-            out += [f'### {esc(p["short_name"])}', '', f'**{esc(p["title"])}**<br>',
-                    f'{p["published"] or "日期待核实"} · {esc(" / ".join(p["tags"]))}<br>', paper_links(p), '',
-                    '<details>', '<summary>中文简介：问题 · 方法 · 价值 · 局限</summary>', '']
+            out += [f'+ {markdown_link(p["title"], p["paper_url"])}<br>',
+                    '  ' + ' '.join(f'[![{label}]({image})](<{url}>)' for label, image, url in paper_badges(p)),
+                    f'  <br>{p["published"] or "日期待核实"} · {esc(" / ".join(p["tags"]))}', '',
+                    '  <details>', '  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>', '']
             for key, label in PARTS.items():
-                out.append(f'- **{label}**：{esc(p["summary"][key])}')
-            out += ['', '来源：' + ' · '.join(f'<a href="{esc(u)}">[{i+1}]</a>' for i, u in enumerate(p['evidence_urls'])),
-                    f'核验：{p["verified_at"]}', '', '</details>', '']
+                out.append(f'  - **{label}**：{esc(p["summary"][key])}')
+            out += ['', '  来源：' + ' · '.join(f'<a href="{esc(u)}">[{i+1}]</a>' for i, u in enumerate(p['evidence_urls'])),
+                    f'  核验：{p["verified_at"]}', '', '  </details>', '']
     out += ['## 维护', '', 'Python 3.9+，无第三方依赖。', '', '```bash',
             'python3 scripts/paper_watch.py validate', 'python3 scripts/paper_watch.py build --check',
             'python3 -m unittest discover -s tests -v', 'node --test tests/reader.test.cjs', '```', '',
-            '数据和源码公开；不收录 PDF、私人笔记、实验记录或会话原文。三个既有任务的自动接入仍需核实任务 ID 与执行能力，仓库本身不创建新定时任务。', '',
+            '数据和源码公开；不收录 PDF、私人笔记、实验记录或会话原文。推送到 main 后自动验证并部署在线阅读页及离线 ZIP。云端研究任务的接入状态见 [接入说明](docs/INTEGRATION.md)。', '',
             '组织形式参考 [Awesome-Video-Diffusion](https://github.com/showlab/Awesome-Video-Diffusion)。摘要为本项目独立撰写；论文、模型和源码的使用条件以各原始发布方为准。', '']
     return '\n'.join(out)
 
@@ -295,7 +320,7 @@ def render_html(papers, root=ROOT):
         citations = ' · '.join(f'<a href="{esc(u)}" rel="noopener noreferrer">来源 {i+1}</a>' for i, u in enumerate(p['evidence_urls']))
         cards.append(f'''<article class="paper" data-category="{esc(p['category'])}" data-search="{esc(searchable.lower())}">
 <div class="paper-meta"><span>{esc(p['category'])}</span><time>{p['published'] or '日期待核实'}</time><span class="number">{index:02d}</span></div>
-<h2>{esc(p['short_name'])}</h2><p class="paper-title">{esc(p['title'])}</p>
+<h2><a href="{esc(p['paper_url'])}">{esc(p['short_name'])}</a></h2><p class="paper-title"><a href="{esc(p['paper_url'])}">{esc(p['title'])}</a></p>
 <p class="links">{paper_links(p)}</p>
 <details><summary>中文简介 <span aria-hidden="true">＋</span></summary><div class="abstract">{paragraphs}<p class="evidence">{citations} · 核验 {p['verified_at']}</p></div></details>
 </article>''')
