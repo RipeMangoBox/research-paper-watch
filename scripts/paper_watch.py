@@ -3,7 +3,6 @@
 import argparse
 import copy
 import datetime as dt
-import fcntl
 import hashlib
 import html
 import ipaddress
@@ -13,12 +12,19 @@ from pathlib import Path
 import re
 import sys
 import tempfile
+import time
 from contextlib import contextmanager
 from urllib.parse import parse_qsl, quote, unquote, urlencode, urlsplit, urlunsplit
 
+if os.name == 'nt':
+    import msvcrt
+else:
+    import fcntl
+
 ROOT = Path(__file__).resolve().parents[1]
-SOURCES = ('vigen-seed', 'video-avatar', 'embodied-world', 'interactive-video')
-CATEGORIES = ('视频生成基础', '少步蒸馏', '交互长视频', '流式系统', '具身与世界模型', '交互 Avatar')
+SOURCES = ('vigen-seed', 'video-avatar', 'embodied-world', 'interactive-video', 'manual-reading')
+CATEGORIES = ('视频生成基础', '少步蒸馏', '交互长视频', '流式系统', '具身与世界模型', '交互 Avatar',
+              '智能体与上下文', '多模态检索', '评测与可靠性', '训练与推理效率', '多模态架构与综述', '三维生成与重建')
 PARTS = {'problem': '问题', 'method': '方法', 'value': '价值', 'limitation': '局限'}
 FIELDS = {'id', 'title', 'short_name', 'published', 'category', 'tags', 'arxiv_id', 'doi',
           'paper_url', 'links', 'summary', 'evidence_urls', 'verified_at',
@@ -241,9 +247,26 @@ def atomic(path, value):
 
 @contextmanager
 def locked(root=ROOT):
-    with (root / '.watch.lock').open('a') as handle:
-        fcntl.flock(handle, fcntl.LOCK_EX)
-        yield
+    with (root / '.watch.lock').open('a+b') as handle:
+        if os.name == 'nt':
+            # Lock a fixed byte, including when the lock file is initially empty.
+            handle.seek(0)
+            while True:
+                try:
+                    msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+                    break
+                except OSError as exc:
+                    if exc.errno not in (13, 36):
+                        raise
+                    time.sleep(0.05)
+            try:
+                yield
+            finally:
+                handle.seek(0)
+                msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+        else:
+            fcntl.flock(handle, fcntl.LOCK_EX)
+            yield
 
 
 def esc(s):
@@ -281,7 +304,7 @@ def markdown_link(label, url):
 
 def render_readme(papers):
     out = ['# Research Paper Watch', '',
-           '公开论文精选：视频生成、交互 Avatar、具身与世界模型。每篇附可折叠中文简介与一手来源。', '',
+           '公开论文精选：视频、三维与具身、智能体、多模态检索、评测及训练推理。每篇附可折叠中文简介与一手来源。', '',
            f'**{len(papers)} 篇论文** · [在线阅读（支持快捷键）](https://ripemangobox.github.io/research-paper-watch/) · [下载离线阅读器 ZIP](https://ripemangobox.github.io/research-paper-watch/research-paper-watch.zip) · [唯一数据源](data/papers.json) · [导入与任务接入](docs/INTEGRATION.md)', '',
            '在线阅读页直接支持搜索、分类、E 全部展开、C 全部收起。离线 ZIP 解压后双击 index.html，无需安装或启动服务器。GitHub README 不运行自定义脚本：可点击简介，或 Tab 聚焦后按 Enter / 空格展开收起；E / C 请使用在线阅读页。', '',
            '日期为论文首次公开日期；空链接表示尚未核实。简介中的局限包含基于公开证据的阅读边界，不代表作者自述的缺陷。', '',

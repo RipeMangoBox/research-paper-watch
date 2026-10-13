@@ -34,7 +34,7 @@ GitHub README 使用每篇 `<details>` 折叠，支持 Tab 聚焦后 Enter / 空
 | --- | --- |
 | `title`, `short_name` | 论文完整标题、简短名称，单行纯文本 |
 | `published` | 首次公开日期 `YYYY-MM-DD`；未知为 `null`，不能用收录日期替代 |
-| `category` | 视频生成基础 / 少步蒸馏 / 交互长视频 / 流式系统 / 具身与世界模型 / 交互 Avatar |
+| `category` | 视频生成基础 / 少步蒸馏 / 交互长视频 / 流式系统 / 具身与世界模型 / 交互 Avatar / 智能体与上下文 / 多模态检索 / 评测与可靠性 / 训练与推理效率 / 多模态架构与综述 / 三维生成与重建 |
 | `tags` | 最多 12 个短标签组成的数组 |
 | `arxiv_id` | 如 `2412.07772`；无则 `null`，版本号会被去除 |
 | `doi` | 已核实 DOI；无则 `null` |
@@ -50,7 +50,9 @@ GitHub README 使用每篇 `<details>` 折叠，支持 Tab 聚焦后 Enter / 空
 
 ## 三个方向共同导入
 
-三个来源标记是 `video-avatar`、`embodied-world`、`interactive-video`；初始精选为 `vigen-seed`。这些标记代表研究方向，不是调度器 ID；同一个合并任务顺序导入三个方向即可。
+三个来源标记是 `video-avatar`、`embodied-world`、`interactive-video`；初始精选为 `vigen-seed`。这三个方向标记不是调度器 ID；同一个合并任务顺序导入三个方向即可。
+
+人工阅读导入使用 `manual-reading`，不改变已有定时任务的研究范围与调度。人工导读阅读摘要（abstract）和引言（introduction）即可，不能只改写摘要。简介概括问题、核心思路、价值与适用边界；超出阅读范围的实验细节不作未经核对的断言。版本差异应明确说明；无法取得引言时暂缓收录。可在 `evidence_urls` 保留带版本号的 PDF 链接，以便追溯阅读依据。
 
 ```bash
 # 仅核验和预览合并统计，不写论文文件、不联网

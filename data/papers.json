@@ -693,6 +693,739 @@
       ]
     },
     {
+      "title": "IterSynth: Rethinking Deep Search Agents via Role-Decoupled Iterative Synthesis",
+      "short_name": "IterSynth",
+      "published": "2026-09-24",
+      "category": "智能体与上下文",
+      "tags": [
+        "摘要状态",
+        "深度搜索",
+        "角色解耦"
+      ],
+      "doi": null,
+      "arxiv_id": "2609.29444",
+      "paper_url": "https://arxiv.org/abs/2609.29444",
+      "id": "arxiv:2609.29444",
+      "links": {
+        "project": null,
+        "code": "https://github.com/Tencent/IterSynth",
+        "weights": null
+      },
+      "summary": {
+        "problem": "搜索规划与证据综合共用长历史，易受噪声与职责耦合影响。",
+        "method": "同一模型轮流规划和更新摘要，每轮重建上下文，并按角色独立归一化过程奖励。",
+        "value": "8B五项均分50.7，较仅结果奖励高1.8点。",
+        "limitation": "GAIA低于部分8B基线，摘要遗漏与裁判质量仍是边界。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2609.29444",
+        "https://arxiv.org/pdf/2609.29444v1",
+        "https://github.com/Tencent/IterSynth"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "From Saliency to Discriminability: Rank-Preserving Visual Token Pruning for VLM Rerankers",
+      "short_name": "RaDiCal",
+      "published": "2026-09-01",
+      "category": "多模态检索",
+      "tags": [
+        "排序保持",
+        "注意力熵",
+        "视觉裁剪"
+      ],
+      "doi": null,
+      "arxiv_id": "2609.00667",
+      "paper_url": "https://arxiv.org/abs/2609.00667",
+      "id": "arxiv:2609.00667",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "候选图像的显著区域未必包含决定排序的差异。",
+        "method": "用注意力熵融合查询相关性与跨候选差异，并据此选择分层裁剪位置。",
+        "value": "保留20%视觉词元时，两架构实测加速1.28至1.45倍。",
+        "limitation": "FashionIQ主表只计首轮命中子集，仍低于未裁剪模型。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2609.00667",
+        "https://arxiv.org/pdf/2609.00667v1"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "From Final Artifacts to Trajectories: Retrospective Process Supervision for Evidence-Grounded Long-Form Generation",
+      "short_name": "RetroGen",
+      "published": "2026-08-31",
+      "category": "智能体与上下文",
+      "tags": [
+        "自训练",
+        "证据生成",
+        "过程监督"
+      ],
+      "doi": null,
+      "arxiv_id": "2608.30461",
+      "paper_url": "https://arxiv.org/abs/2608.30461",
+      "id": "arxiv:2608.30461",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "专家成品丰富，真实检索写作轨迹却稀缺。",
+        "method": "从成品反推任务并实际执行检索，以四维评分过滤，用验证后的合成稿配对轨迹训练。",
+        "value": "同预算对照显示过程监督优于仅模仿最终产物。",
+        "limitation": "恢复的是合理候选过程；效果依赖成品中可追溯的证据。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2608.30461",
+        "https://arxiv.org/pdf/2608.30461v1"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "SnapBench: Benchmarking Snap-and-Ask Multimodal Retrieval for Mobile Interactions",
+      "short_name": "SnapBench / MOOR",
+      "published": "2026-08-30",
+      "category": "多模态检索",
+      "tags": [
+        "拍照问答",
+        "模态融合",
+        "鲁棒检索"
+      ],
+      "doi": null,
+      "arxiv_id": "2608.29607",
+      "paper_url": "https://arxiv.org/abs/2608.29607",
+      "id": "arxiv:2608.29607",
+      "links": {
+        "project": null,
+        "code": "https://github.com/zrchen03/SnapBench",
+        "weights": null
+      },
+      "summary": {
+        "problem": "拍照问答的图文噪声与粗粒度文本可能共同损害实体检索。",
+        "method": "固定目标及图库构造成对扰动，按图像排序一致性和分数方差自适应融合。",
+        "value": "揭示文本稀释视觉排序及联合扰动的非加性影响。",
+        "limitation": "1145查询且扰动为程序合成，不能替代真实上传分布评估。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2608.29607",
+        "https://arxiv.org/pdf/2608.29607v1",
+        "https://github.com/zrchen03/SnapBench"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "RePair: Turning Retrieval Failures into Counterfactual Hard Pairs",
+      "short_name": "RePair",
+      "published": "2026-08-30",
+      "category": "多模态检索",
+      "tags": [
+        "反事实数据",
+        "困难样本",
+        "对比学习"
+      ],
+      "doi": null,
+      "arxiv_id": "2608.29604",
+      "paper_url": "https://arxiv.org/abs/2608.29604",
+      "id": "arxiv:2608.29604",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "通用数据增强不一定修复检索器当前的近邻语义混淆。",
+        "method": "双向挖掘并核验误召回，最小反事实编辑后组织3×3局部对比网格，保留原始全局损失。",
+        "value": "同预算消融支持失败定位与局部配对的贡献。",
+        "limitation": "仅单次模型快照挖掘，跨数据集迁移及融合式检索器未验证。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2608.29604",
+        "https://arxiv.org/pdf/2608.29604v1"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "ContextPilot: Teaching Agents for Proactive Context Management via Fine-grained RL",
+      "short_name": "ContextPilot",
+      "published": "2026-08-28",
+      "category": "智能体与上下文",
+      "tags": [
+        "上下文管理",
+        "分支采样",
+        "强化学习"
+      ],
+      "doi": null,
+      "arxiv_id": "2608.28476",
+      "paper_url": "https://arxiv.org/abs/2608.28476",
+      "id": "arxiv:2608.28476",
+      "links": {
+        "project": "https://tencent.github.io/ContextPilot",
+        "code": "https://github.com/Tencent/ContextPilot",
+        "weights": null
+      },
+      "summary": {
+        "problem": "长任务中删改上下文的收益难由最终答案奖励准确归因。",
+        "method": "扩展记忆与可恢复折叠工具，按长度和熵变化分支，聚合后继奖励训练轨迹快照。",
+        "value": "8B长问答均分较StateLM提升3.55点。",
+        "limitation": "依赖专门训练；编码与GUI任务尚未验证。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2608.28476",
+        "https://arxiv.org/pdf/2608.28476v1",
+        "https://github.com/Tencent/ContextPilot",
+        "https://tencent.github.io/ContextPilot"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "HyQuant: Hybrid-Precision Quantization for LLM Attention",
+      "short_name": "HyQuant",
+      "published": "2026-08-28",
+      "category": "训练与推理效率",
+      "tags": [
+        "KV缓存",
+        "注意力量化",
+        "混合精度"
+      ],
+      "doi": null,
+      "arxiv_id": "2608.27875",
+      "paper_url": "https://arxiv.org/abs/2608.27875",
+      "id": "arxiv:2608.27875",
+      "links": {
+        "project": null,
+        "code": "https://github.com/jerrysfls/HyQuant",
+        "weights": null
+      },
+      "summary": {
+        "problem": "均匀低比特量化会放大高注意力位置的误差。",
+        "method": "保留高列注意力词元和局部窗口为高精度，将其余KV量化并融合反量化计算。",
+        "value": "在所测模型上接近全精度，减轻长上下文显存压力。",
+        "limitation": "32K内核加速3.58倍但端到端仅1.17倍，依赖H100设置。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2608.27875",
+        "https://arxiv.org/pdf/2608.27875v3",
+        "https://github.com/jerrysfls/HyQuant"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "A Survey on Rubric-Guided Reinforcement Learning for Language Models",
+      "short_name": "Rubric-Guided RL Survey",
+      "published": "2026-08-27",
+      "category": "多模态架构与综述",
+      "tags": [
+        "奖励投机",
+        "强化学习",
+        "评分细则"
+      ],
+      "doi": null,
+      "arxiv_id": "2608.27505",
+      "paper_url": "https://arxiv.org/abs/2608.27505",
+      "id": "arxiv:2608.27505",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "自然语言奖励细则的歧义、粒度与语义漂移影响强化学习。",
+        "method": "以先验和条件化细则组织方法，并建议在固定参考集上监测评分秩相关衰减。",
+        "value": "区分逐步监督与原子清单，为奖励审计提供思路。",
+        "limitation": "贝叶斯表述是分析抽象，多数方法没有精确推断保证或统一对照。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2608.27505",
+        "https://arxiv.org/pdf/2608.27505v2"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "EviRank: Structured Relevance Evidence for Multimodal Image Re-ranking",
+      "short_name": "EviRank",
+      "published": "2026-08-21",
+      "category": "多模态检索",
+      "tags": [
+        "结构化证据",
+        "蒸馏",
+        "重排序"
+      ],
+      "doi": null,
+      "arxiv_id": "2608.20886",
+      "paper_url": "https://arxiv.org/abs/2608.20886",
+      "id": "arxiv:2608.20886",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "图像重排序易忽略组合查询中的细粒度约束。",
+        "method": "以六类语义槽表示必需、禁止及可忽略条件，先规则评分再局部列表比较。",
+        "value": "消融支持约束分解的作用，学生可脱离教师部署。",
+        "limitation": "效果受首轮候选覆盖限制，实验主要为英文静态图像。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2608.20886",
+        "https://arxiv.org/pdf/2608.20886v1"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "TRAJDEBUG: Tracing Error Lifecycle to Identify Critical Failures in Long-Horizon Agent Trajectories",
+      "short_name": "TRAJDEBUG",
+      "published": "2026-08-06",
+      "category": "智能体与上下文",
+      "tags": [
+        "轨迹诊断",
+        "过程反馈",
+        "错误归因"
+      ],
+      "doi": null,
+      "arxiv_id": "2608.06346",
+      "paper_url": "https://arxiv.org/abs/2608.06346",
+      "id": "arxiv:2608.06346",
+      "links": {
+        "project": null,
+        "code": "https://github.com/THU-KEG/TrajDebug",
+        "weights": null
+      },
+      "summary": {
+        "problem": "长轨迹局部错误可能被修复或无害，最早出错不等于失败根因。",
+        "method": "分层压缩历史，以逐字证据识别冲突，按修复状态与终局影响筛选后归因。",
+        "value": "同骨干关键步骤准确率由25.69%升至34.11%。",
+        "limitation": "漏检会传播，最终归因仍依赖模型判断。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2608.06346",
+        "https://arxiv.org/pdf/2608.06346v1",
+        "https://github.com/THU-KEG/TrajDebug"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "OmniX: Any-view and Any-time 4D Reconstruction via Feed-forward Trajectory Fields",
+      "short_name": "OmniX",
+      "published": "2026-07-12",
+      "category": "三维生成与重建",
+      "tags": [
+        "四维重建",
+        "点轨迹",
+        "稀疏注意力"
+      ],
+      "doi": null,
+      "arxiv_id": "2607.10840",
+      "paper_url": "https://arxiv.org/abs/2607.10840",
+      "id": "arxiv:2607.10840",
+      "links": {
+        "project": "https://omnix4d.github.io/",
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "静态几何与动态对应混合建模，妨碍大幅视角变化下的四维重建。",
+        "method": "用少量动态词元与稀疏时空注意力分离运动，再以可变形采样头输出逐像素轨迹。",
+        "value": "一次前馈整合跨视角和时刻观测，配套UE5几何标注数据。",
+        "limitation": "方法利用运动稀疏低秩假设；并非直接生成可渲染的动态资产。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2607.10840",
+        "https://arxiv.org/pdf/2607.10840v1",
+        "https://omnix4d.github.io/"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "EditVerse3D: High-Quality 3D Object Editing with Region-Aware Learning",
+      "short_name": "EditVerse3D",
+      "published": "2026-07-08",
+      "category": "三维生成与重建",
+      "tags": [
+        "三维编辑",
+        "区域自适应",
+        "粗框引导"
+      ],
+      "doi": null,
+      "arxiv_id": "2607.07187",
+      "paper_url": "https://arxiv.org/abs/2607.07187",
+      "id": "arxiv:2607.07187",
+      "links": {
+        "project": "https://editverse3d.github.io/",
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "精确掩码与多视图编辑流程增加三维局部修改的操作成本。",
+        "method": "基于TRELLIS输入粗三维框和参考图，自适应加权难学区域，以移除再恢复部件构造训练对。",
+        "value": "将编辑区学习与保留区约束结合，降低精细标注要求。",
+        "limitation": "训练以添加编辑为主；仍需输入三维对象、区域框和目标图。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2607.07187",
+        "https://arxiv.org/pdf/2607.07187v2",
+        "https://editverse3d.github.io/"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "Can LLM-as-a-Judge Reliably Verify Rubrics in Agentic Scenarios?",
+      "short_name": "RuVerBench",
+      "published": "2026-06-29",
+      "category": "评测与可靠性",
+      "tags": [
+        "智能体评测",
+        "模型裁判",
+        "评分细则"
+      ],
+      "doi": null,
+      "arxiv_id": "2606.29920",
+      "paper_url": "https://arxiv.org/abs/2606.29920",
+      "id": "arxiv:2606.29920",
+      "links": {
+        "project": null,
+        "code": "https://github.com/THU-KEG/RuVerBench",
+        "weights": null
+      },
+      "summary": {
+        "problem": "研究报告与代码轨迹中的评分细则难以被模型可靠核验。",
+        "method": "人工双重标注并裁决2458个输出与细则配对，按类别宏平均平衡准确率评估。",
+        "value": "揭示代码轨迹比报告更难，批量核验存在效率与准确性权衡。",
+        "limitation": "已剔除含糊及缺证据细则，不能代表全部线上评审。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2606.29920",
+        "https://arxiv.org/pdf/2606.29920v2",
+        "https://github.com/THU-KEG/RuVerBench"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "Summarization is Not Dead Yet",
+      "short_name": "Summarization is Not Dead Yet",
+      "published": "2026-06-06",
+      "category": "评测与可靠性",
+      "tags": [
+        "事实性",
+        "人工评测",
+        "文本摘要"
+      ],
+      "doi": null,
+      "arxiv_id": "2606.08000",
+      "paper_url": "https://arxiv.org/abs/2606.08000",
+      "id": "arxiv:2606.08000",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "整体偏好容易把摘要流畅度与信息充分性混为一谈。",
+        "method": "结合分维人工盲评、排除自评的模型裁判、外部事实核验与语言学分析。",
+        "value": "五数据集上人工摘要保有信息和忠实性优势。",
+        "limitation": "仅五个通用模型的零样本快照；外部事实正确不等于遵守仅据原文要求。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2606.08000",
+        "https://arxiv.org/pdf/2606.08000v3"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "RedEdit: Agentic Red-Teaming of Image Safety Classifiers via MCTS-Guided Photo-Editing",
+      "short_name": "RedEdit",
+      "published": "2026-06-04",
+      "category": "评测与可靠性",
+      "tags": [
+        "图像安全",
+        "红队测试",
+        "鲁棒评测"
+      ],
+      "doi": null,
+      "arxiv_id": "2606.06140",
+      "paper_url": "https://arxiv.org/abs/2606.06140",
+      "id": "arxiv:2606.06140",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "图像审核器对常见照片编辑的稳健性缺少系统评测。",
+        "method": "用视觉模型提议与树搜索组织编辑序列，同时核验检测结果和内容保留。",
+        "value": "为审核防御提供跨检测器失效诊断。",
+        "limitation": "76.2%来自原本被拦截的164张中125张，非全部777张；编辑深度不等于查询次数。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2606.06140",
+        "https://arxiv.org/pdf/2606.06140v1"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "Toward Native Multimodal Modeling: A Roadmap",
+      "short_name": "NMM Roadmap",
+      "published": "2026-05-25",
+      "category": "多模态架构与综述",
+      "tags": [
+        "原生多模态",
+        "流式交互",
+        "理解与生成"
+      ],
+      "doi": null,
+      "arxiv_id": "2605.25343",
+      "paper_url": "https://arxiv.org/abs/2605.25343",
+      "id": "arxiv:2605.25343",
+      "links": {
+        "project": "https://nmm-roadmap.github.io/",
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "原生多模态的融合深度与输入输出能力缺少统一描述。",
+        "method": "交叉梳理中早期融合与三类模态流，比较离散统一和保留模态特性的路线。",
+        "value": "串联数据配比、训练、流式部署，并提出质量与响应时机联合评测。",
+        "limitation": "属分类与路线展望，未以受控实验确立早期融合的普遍优势。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2605.25343",
+        "https://arxiv.org/pdf/2605.25343v1",
+        "https://nmm-roadmap.github.io/"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "ShotVerse: Advancing Cinematic Camera Control for Text-Driven Multi-Shot Video Creation",
+      "short_name": "ShotVerse",
+      "published": "2026-03-12",
+      "category": "交互长视频",
+      "tags": [
+        "多镜头视频",
+        "相机控制",
+        "轨迹规划"
+      ],
+      "doi": null,
+      "arxiv_id": "2603.11421",
+      "paper_url": "https://arxiv.org/abs/2603.11421",
+      "id": "arxiv:2603.11421",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "文本镜头描述不够精确，而手工设计跨镜头轨迹成本高。",
+        "method": "将各镜头标定到统一坐标，以同源图文轨迹数据分别训练VLM规划器与相机适配生成器。",
+        "value": "用显式轨迹连接叙事意图和镜头执行，分开评测规划、执行与一致性。",
+        "limitation": "聚焦整体式多镜头模型的相机控制，不覆盖完整自动制片流程。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2603.11421",
+        "https://arxiv.org/pdf/2603.11421v2"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "DSH-Bench: A Difficulty- and Scenario-Aware Benchmark with Hierarchical Subject Taxonomy for Subject-Driven Text-to-Image Generation",
+      "short_name": "DSH-Bench",
+      "published": "2026-03-09",
+      "category": "评测与可靠性",
+      "tags": [
+        "主体生成",
+        "分层评测",
+        "身份一致性"
+      ],
+      "doi": null,
+      "arxiv_id": "2603.08090",
+      "paper_url": "https://arxiv.org/abs/2603.08090",
+      "id": "arxiv:2603.08090",
+      "links": {
+        "project": null,
+        "code": "https://github.com/sunriverhzy/DSH-Bench",
+        "weights": null
+      },
+      "summary": {
+        "problem": "主体生成的总分掩盖复杂主体与不同指令场景的能力差异。",
+        "method": "按层级采样58类主体，交叉划分难度与场景，以人工评分及解释微调Qwen裁判。",
+        "value": "把主体保持、指令遵循和画质分开诊断，定位细节重建短板。",
+        "limitation": "聚焦单主体；身份保持与属性改写存在权衡，不能外推多主体交互。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2603.08090",
+        "https://arxiv.org/pdf/2603.08090v3",
+        "https://github.com/sunriverhzy/DSH-Bench"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "KDFlow: A User-Friendly and Efficient Knowledge Distillation Framework for Large Language Models",
+      "short_name": "KDFlow",
+      "published": "2026-03-02",
+      "category": "训练与推理效率",
+      "tags": [
+        "知识蒸馏",
+        "训推解耦",
+        "通信优化"
+      ],
+      "doi": null,
+      "arxiv_id": "2603.01875",
+      "paper_url": "https://arxiv.org/abs/2603.01875",
+      "id": "arxiv:2603.01875",
+      "links": {
+        "project": null,
+        "code": "https://github.com/songmzhang/KDFlow",
+        "weights": null
+      },
+      "summary": {
+        "problem": "教师推理与学生训练共用后端低效，全词表输出传输昂贵。",
+        "method": "教师由SGLang执行，仅传末层隐状态，在FSDP2学生侧重算完整输出分布。",
+        "value": "保持蒸馏损失并降低通信，离线实验加速1.44至6.36倍。",
+        "limitation": "上限采用FP8教师；超64卡扩展与异步训练尚未验证。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2603.01875",
+        "https://arxiv.org/pdf/2603.01875v4",
+        "https://github.com/songmzhang/KDFlow"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "Pathwise Test-Time Correction for Autoregressive Long Video Generation",
+      "short_name": "Pathwise TTC",
+      "published": "2026-02-05",
+      "category": "交互长视频",
+      "tags": [
+        "测试时校正",
+        "漂移抑制",
+        "自回归视频"
+      ],
+      "doi": null,
+      "arxiv_id": "2602.05871",
+      "paper_url": "https://arxiv.org/abs/2602.05871",
+      "id": "arxiv:2602.05871",
+      "links": {
+        "project": "https://ttc-1231.github.io/",
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "少步自回归视频累积漂移，测试时梯度优化又易破坏蒸馏模型。",
+        "method": "待全局结构稳定后，以首帧条件校正中间预测，再加噪回当前时间步的方差水平。",
+        "value": "无需重训即可干预采样轨迹，作者报告改善30秒生成稳定性。",
+        "limitation": "依赖初始锚点与随机采样过程；额外校正仍有推理开销。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2602.05871",
+        "https://arxiv.org/pdf/2602.05871v2",
+        "https://ttc-1231.github.io/"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
       "title": "Causal Forcing: Autoregressive Diffusion Distillation Done Right for High-Quality Real-Time Interactive Video Generation",
       "short_name": "Causal Forcing",
       "published": "2026-02-02",
@@ -880,6 +1613,79 @@
       "last_seen": "2026-10-12",
       "discovery_sources": [
         "vigen-seed"
+      ]
+    },
+    {
+      "title": "Purify then Guide: Rethinking Domain Generalization for Multimodal Face Anti-Spoofing",
+      "short_name": "MMDA / Purify then Guide",
+      "published": "2025-05-14",
+      "category": "评测与可靠性",
+      "tags": [
+        "人脸反欺骗",
+        "多模态",
+        "跨域泛化"
+      ],
+      "doi": null,
+      "arxiv_id": "2505.09484",
+      "paper_url": "https://arxiv.org/abs/2505.09484",
+      "id": "arxiv:2505.09484",
+      "links": {
+        "project": null,
+        "code": "https://github.com/murInJ/MMDA",
+        "weights": null
+      },
+      "summary": {
+        "problem": "直接对齐多模态特征会同时对齐伪造线索和域偏差。",
+        "method": "以同域异样本差分抑制共有噪声，再软对齐多提示语义子空间，并用U形适配保留CLIP结构。",
+        "value": "将去噪、语义引导与任务适配分开处理，兼顾缺失模态场景。",
+        "limitation": "依赖同域共享偏差的建模假设；基准收益不等于开放环境安全保证。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2505.09484",
+        "https://arxiv.org/pdf/2505.09484v2",
+        "https://github.com/murInJ/MMDA"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
+      ]
+    },
+    {
+      "title": "FactGuard: Leveraging Multi-Agent Systems to Generate Answerable and Unanswerable Questions for Enhanced Long-Context LLM Extraction",
+      "short_name": "FactGuard（公开初版）",
+      "published": "2025-04-08",
+      "category": "评测与可靠性",
+      "tags": [
+        "公开初版",
+        "拒答",
+        "长上下文"
+      ],
+      "doi": null,
+      "arxiv_id": "2504.05607",
+      "paper_url": "https://arxiv.org/abs/2504.05607",
+      "id": "arxiv:2504.05607",
+      "links": {
+        "project": null,
+        "code": null,
+        "weights": null
+      },
+      "summary": {
+        "problem": "长文问答常把相关但不足的证据误作可回答依据。",
+        "method": "筛选文本片段生成证据问答，再删除证据或改写错误前提，并检索复查冲突答案。",
+        "value": "区分缺失与误导证据，支持诊断拒答能力。",
+        "limitation": "本条据2025年公开初版；不能套用后续稿的11模型及71.62%结论。"
+      },
+      "evidence_urls": [
+        "https://arxiv.org/abs/2504.05607",
+        "https://arxiv.org/pdf/2504.05607v1"
+      ],
+      "verified_at": "2026-10-13",
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "discovery_sources": [
+        "manual-reading"
       ]
     },
     {
