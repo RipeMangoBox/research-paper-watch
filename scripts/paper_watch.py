@@ -22,13 +22,17 @@ else:
     import fcntl
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCES = ('vigen-seed', 'video-avatar', 'embodied-world', 'interactive-video', 'manual-reading')
+SOURCES = ('vigen-seed', 'video-avatar', 'embodied-world', 'interactive-video', 'manual-reading', 'arc-academic')
 CATEGORIES = ('视频生成基础', '少步蒸馏', '交互长视频', '流式系统', '具身与世界模型', '交互 Avatar',
-              '智能体与上下文', '多模态检索', '评测与可靠性', '训练与推理效率', '多模态架构与综述', '三维生成与重建')
+              '智能体与上下文', '多模态检索', '评测与可靠性', '训练与推理效率', '多模态架构与综述', '三维生成与重建',
+              '图像生成与编辑', '视频理解与推理', '语音与音频', '视觉感知', '领域应用')
+PRIORITIES = {'P0': '必读', 'P1': '重点', 'P2': '选读', 'P3': '暂缓'}
+READING = {'abs-intro': '摘要与引言', 'full-text': '已核对正文', 'metadata-only': '待补引言'}
 PARTS = {'problem': '问题', 'method': '方法', 'value': '价值', 'limitation': '局限'}
 FIELDS = {'id', 'title', 'short_name', 'published', 'category', 'tags', 'arxiv_id', 'doi',
           'paper_url', 'links', 'summary', 'evidence_urls', 'verified_at',
-          'first_seen', 'last_seen', 'discovery_sources'}
+          'first_seen', 'last_seen', 'discovery_sources', 'venue', 'venue_url',
+          'priority', 'priority_reason', 'reading_status'}
 ARXIV = re.compile(r'(?:\d{4}\.\d{4,5}|[a-z-]+(?:\.[A-Z]{2})?/\d{7})(?:v\d+)?$', re.I)
 
 
@@ -114,6 +118,17 @@ def normalize(raw, source=None, observed=None):
     if not isinstance(tags, list) or len(tags) > 12:
         raise ValueError('tags must be a list of at most 12 strings')
     p['tags'] = sorted(set(text(t, 'tag', 60) for t in tags))
+    p['venue'] = text(raw.get('venue', '录用待核实'), 'venue', 120)
+    p['venue_url'] = canonical_url(raw['venue_url']) if raw.get('venue_url') else None
+    p['priority'] = raw.get('priority')
+    if p['priority'] is not None and p['priority'] not in PRIORITIES:
+        raise ValueError('Unknown reading priority')
+    p['priority_reason'] = text(raw['priority_reason'], 'priority_reason', 200) if raw.get('priority_reason') else None
+    if bool(p['priority']) != bool(p['priority_reason']):
+        raise ValueError('Reading priority and reason must be supplied together')
+    p['reading_status'] = raw.get('reading_status', 'metadata-only')
+    if p['reading_status'] not in READING:
+        raise ValueError('Unknown reading status')
     paper_url = canonical_url(raw['paper_url'])
     explicit_arxiv = arxiv(raw.get('arxiv_id'))
     if raw.get('arxiv_id') and not explicit_arxiv:
@@ -188,6 +203,12 @@ def merge(old, new):
     # Newer verified metadata wins; null optional links never erase verified links.
     older, newer = (old, new) if new['verified_at'] >= old['verified_at'] else (new, old)
     p = copy.deepcopy(newer)
+    if not newer.get('priority'):
+        p['priority'], p['priority_reason'] = older.get('priority'), older.get('priority_reason')
+    if newer.get('venue') == '录用待核实' and older.get('venue') != '录用待核实':
+        p['venue'], p['venue_url'] = older['venue'], older.get('venue_url')
+    if newer.get('reading_status') == 'metadata-only':
+        p['reading_status'] = older.get('reading_status', 'metadata-only')
     for key in ('arxiv_id', 'doi', 'published'):
         p[key] = newer[key] or older[key]
     p['links'] = {k: newer['links'][k] or older['links'][k] for k in newer['links']}
@@ -205,7 +226,7 @@ def catalogue(raw):
 
 
 def load(root=ROOT):
-    papers = [normalize(p) for p in catalogue(json.loads((root / 'data/papers.json').read_text()))]
+    papers = [normalize(p) for p in catalogue(json.loads((root / 'data/papers.json').read_text(encoding='utf-8')))]
     seen = set()
     for p in papers:
         if seen & identities(p):
@@ -302,20 +323,35 @@ def markdown_link(label, url):
     return f'[{label}](<{url}>)'
 
 
-def render_readme(papers):
-    out = ['# Research Paper Watch', '',
+def site(root=ROOT):
+    path = root / 'data/site.json'
+    return json.loads(path.read_text(encoding='utf-8')) if path.exists() else {
+        'title': 'Research Paper Watch', 'repository': 'RipeMangoBox/research-paper-watch',
+        'url': 'https://ripemangobox.github.io/research-paper-watch/', 'scope': ''}
+
+
+def ranked(papers):
+    papers = sorted(papers, key=lambda p: (p['published'] or '', p['id']), reverse=True)
+    return sorted(papers, key=lambda p: p.get('priority') or 'P9')
+
+
+def render_readme(papers, root=ROOT):
+    config = site(root)
+    out = ['# ' + config['title'], '',
            '公开论文精选：视频、三维与具身、智能体、多模态检索、评测及训练推理。每篇附可折叠中文简介与一手来源。', '',
            f'**{len(papers)} 篇论文** · [在线阅读（支持快捷键）](https://ripemangobox.github.io/research-paper-watch/) · [下载离线阅读器 ZIP](https://ripemangobox.github.io/research-paper-watch/research-paper-watch.zip) · [唯一数据源](data/papers.json) · [导入与任务接入](docs/INTEGRATION.md)', '',
            '在线阅读页直接支持搜索、分类、E 全部展开、C 全部收起。离线 ZIP 解压后双击 index.html，无需安装或启动服务器。GitHub README 不运行自定义脚本：可点击简介，或 Tab 聚焦后按 Enter / 空格展开收起；E / C 请使用在线阅读页。', '',
            '日期为论文首次公开日期；空链接表示尚未核实。简介中的局限包含基于公开证据的阅读边界，不代表作者自述的缺陷。', '',
            '## 目录', '']
+    out[5:5] = [config['scope'], '',
+        '阅读优先级依据视频生成核心难题、实时交互 Avatar、世界模型、Agent 规划与记忆：**P0 必读 → P1 重点 → P2 选读 → P3 暂缓**。这是课题相关性排序，不是论文质量排名。每篇说明推荐理由；常规阅读范围为 abs + intro。', '']
     for category in CATEGORIES:
         count = sum(p['category'] == category for p in papers)
         if count:
             anchor = category.lower().replace(' ', '-')
             out.append(f'- [{category}](#{anchor}) · {count}')
     for category in CATEGORIES:
-        group = [p for p in papers if p['category'] == category]
+        group = ranked([p for p in papers if p['category'] == category])
         if not group:
             continue
         out += ['', f'## {category}', '']
@@ -323,6 +359,8 @@ def render_readme(papers):
             out += [f'+ {markdown_link(p["title"], p["paper_url"])}<br>',
                     '  ' + ' '.join(f'[![{label}]({image})](<{url}>)' for label, image, url in paper_badges(p)),
                     f'  <br>{p["published"] or "日期待核实"} · {esc(" / ".join(p["tags"]))}', '',
+                    f'  **{markdown_link(p["venue"], p["venue_url"]) if p.get("venue_url") else esc(p.get("venue", "录用待核实"))}** · **{p.get("priority") or "待排序"} {PRIORITIES.get(p.get("priority"), "")}** · {READING[p.get("reading_status", "metadata-only")]}',
+                    '  ' + esc(p.get('priority_reason') or '推荐理由待补充'), '',
                     '  <details>', '  <summary>brief</summary>', '']
             for key, label in PARTS.items():
                 out.append(f'  - **{label}**：{esc(p["summary"][key])}')
@@ -333,34 +371,40 @@ def render_readme(papers):
             'python3 -m unittest discover -s tests -v', 'node --test tests/reader.test.cjs', '```', '',
             '数据和源码公开；不收录 PDF、私人笔记、实验记录或会话原文。推送到 main 后自动验证并部署在线阅读页及离线 ZIP。云端研究任务的接入状态见 [接入说明](docs/INTEGRATION.md)。', '',
             '组织形式参考 [Awesome-Video-Diffusion](https://github.com/showlab/Awesome-Video-Diffusion)。摘要为本项目独立撰写；论文、模型和源码的使用条件以各原始发布方为准。', '']
-    return '\n'.join(out)
+    result = '\n'.join(out).replace('https://ripemangobox.github.io/research-paper-watch/', config['url'])
+    return result
 
 
 def render_html(papers, root=ROOT):
     cards = []
-    for index, p in enumerate(papers, 1):
-        searchable = ' '.join([p['title'], p['short_name'], p['category'], *p['tags'], *p['summary'].values(), p['arxiv_id'] or '', p['doi'] or ''])
+    for index, p in enumerate(ranked(papers), 1):
+        searchable = ' '.join([p['title'], p['short_name'], p['category'], *p['tags'], *p['summary'].values(), p['arxiv_id'] or '', p['doi'] or '', p.get('venue', ''), p.get('priority_reason') or ''])
         paragraphs = ''.join(f'<p><strong>{label}</strong>{esc(p["summary"][key])}</p>' for key, label in PARTS.items())
         citations = ' · '.join(f'<a href="{esc(u)}" rel="noopener noreferrer">来源 {i+1}</a>' for i, u in enumerate(p['evidence_urls']))
-        cards.append(f'''<article class="paper" data-category="{esc(p['category'])}" data-search="{esc(searchable.lower())}">
+        tags = ''.join(f'<span>{esc(t)}</span>' for t in p['tags'])
+        venue = f'<a href="{esc(p["venue_url"])}">{esc(p["venue"])}</a>' if p.get('venue_url') else esc(p.get('venue', '录用待核实'))
+        cards.append(f'''<article class="paper" data-priority="{p.get('priority') or ''}" data-category="{esc(p['category'])}" data-search="{esc(searchable.lower())}">
 <div class="paper-meta"><span>{esc(p['category'])}</span><time>{p['published'] or '日期待核实'}</time><span class="number">{index:02d}</span></div>
 <h2><a href="{esc(p['paper_url'])}">{esc(p['short_name'])}</a></h2><p class="paper-title"><a href="{esc(p['paper_url'])}">{esc(p['title'])}</a></p>
 <p class="links">{paper_links(p)}</p>
+<p class="recommendation"><strong>{p.get('priority') or '待排序'} {PRIORITIES.get(p.get('priority'), '')}</strong> · {venue} · {READING[p.get('reading_status', 'metadata-only')]}</p>
+<p class="reason">{esc(p.get('priority_reason') or '推荐理由待补充')}</p><p class="tags">{tags}</p>
 <details><summary>brief <span aria-hidden="true">＋</span></summary><div class="abstract">{paragraphs}<p class="evidence">{citations} · 核验 {p['verified_at']}</p></div></details>
 </article>''')
     options = ''.join(f'<option value="{esc(c)}">{esc(c)}</option>' for c in CATEGORIES)
-    template = (root / 'web/template.html').read_text()
-    return template.replace('<!--STYLE-->', (root / 'web/style.css').read_text()).replace('<!--SCRIPT-->', (root / 'web/reader.js').read_text()).replace('<!--CARDS-->', '\n'.join(cards)).replace('<!--OPTIONS-->', options).replace('<!--COUNT-->', str(len(papers)))
+    template = (root / 'web/template.html').read_text(encoding='utf-8')
+    config = site(root)
+    return template.replace('<!--STYLE-->', (root / 'web/style.css').read_text(encoding='utf-8')).replace('<!--SCRIPT-->', (root / 'web/reader.js').read_text(encoding='utf-8')).replace('<!--CARDS-->', '\n'.join(cards)).replace('<!--OPTIONS-->', options).replace('<!--COUNT-->', str(len(papers))).replace('<!--SCOPE-->', esc(config['scope'])).replace('Research Paper Watch', esc(config['title'])).replace('RipeMangoBox/research-paper-watch', config['repository']).replace('RESEARCH PAPER WATCH', esc(config['title'].upper()))
 
 
 def build(root=ROOT, papers=None, check=False):
     papers = load(root) if papers is None else papers
     papers = sorted(papers, key=lambda p: (p['published'] or '', p['id']), reverse=True)
-    outputs = {'README.md': render_readme(papers), 'dist/index.html': render_html(papers, root)}
+    outputs = {'README.md': render_readme(papers, root), 'dist/index.html': render_html(papers, root)}
     for name, body in outputs.items():
         target = root / name
         if check:
-            if not target.exists() or target.read_text() != body:
+            if not target.exists() or target.read_text(encoding='utf-8') != body:
                 raise ValueError('Generated file is stale: ' + name)
         else:
             atomic(target, body)
@@ -368,10 +412,10 @@ def build(root=ROOT, papers=None, check=False):
 
 def import_batch(path, source, observed, root=ROOT, dry_run=False):
     before = load(root)
-    incoming = catalogue(json.loads(Path(path).read_text()))
+    incoming = catalogue(json.loads(Path(path).read_text(encoding='utf-8')))
     after = combine(before, incoming, source, observed)
     # Render before any write: a template/schema failure cannot partially import data.
-    readme, page = render_readme(after), render_html(after, root)
+    readme, page = render_readme(after, root), render_html(after, root)
     changed = dump(before) != dump(after)
     if changed and not dry_run:
         atomic(root / 'data/papers.json', dump(after))

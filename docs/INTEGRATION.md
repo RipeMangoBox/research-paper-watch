@@ -16,7 +16,7 @@ python3 -m unittest discover -s tests -v
 node --test tests/reader.test.cjs
 ```
 
-直接用浏览器打开 `dist/index.html`。E 全部展开，C 全部收起；搜索框、选择框、可编辑内容、输入法组合期间和任何修饰键组合均不触发快捷键。可关闭快捷键，所有操作均有可聚焦按钮。筛选不改变展开状态；全部展开/收起包括当前被筛选隐藏的论文。
+直接用浏览器打开 `dist/index.html`。E 全部展开，C 全部收起；优先级、研究方向和关键词可组合筛选，关键词覆盖标签与录用信息。搜索框、选择框、可编辑内容、输入法组合期间和任何修饰键组合均不触发快捷键。可关闭快捷键，所有操作均有可聚焦按钮。筛选不改变展开状态；全部展开/收起包括当前被筛选隐藏的论文。
 
 GitHub README 使用每篇 `<details>` 折叠，支持 Tab 聚焦后 Enter / 空格切换；GitHub 不执行 README 自定义 JavaScript，E / C 在[在线阅读页](https://ripemangobox.github.io/research-paper-watch/)中提供。标题、arXiv / Website 与 Star 徽章采用 Awesome-Video-Diffusion 的条目风格；Star 指向各论文的官方代码仓库。
 
@@ -34,7 +34,10 @@ GitHub README 使用每篇 `<details>` 折叠，支持 Tab 聚焦后 Enter / 空
 | --- | --- |
 | `title`, `short_name` | 论文完整标题、简短名称，单行纯文本 |
 | `published` | 首次公开日期 `YYYY-MM-DD`；未知为 `null`，不能用收录日期替代 |
-| `category` | 视频生成基础 / 少步蒸馏 / 交互长视频 / 流式系统 / 具身与世界模型 / 交互 Avatar / 智能体与上下文 / 多模态检索 / 评测与可靠性 / 训练与推理效率 / 多模态架构与综述 / 三维生成与重建 |
+| `category` | 视频生成基础 / 少步蒸馏 / 交互长视频 / 流式系统 / 具身与世界模型 / 交互 Avatar / 智能体与上下文 / 多模态检索 / 评测与可靠性 / 训练与推理效率 / 多模态架构与综述 / 三维生成与重建 / 图像生成与编辑 / 视频理解与推理 / 语音与音频 / 视觉感知 / 领域应用 |
+| `venue`, `venue_url` | 录用会议或期刊及年份、核验来源；未证实则明确标注待核实 |
+| `priority`, `priority_reason` | P0 必读 / P1 重点 / P2 选读 / P3 暂缓，及结合研究目标的推荐理由 |
+| `reading_status` | `abs-intro` 摘要与引言；`full-text` 已核对正文；`metadata-only` 待补引言，仅作占位 |
 | `tags` | 最多 12 个短标签组成的数组 |
 | `arxiv_id` | 如 `2412.07772`；无则 `null`，版本号会被去除 |
 | `doi` | 已核实 DOI；无则 `null` |
@@ -52,7 +55,7 @@ GitHub README 使用每篇 `<details>` 折叠，支持 Tab 聚焦后 Enter / 空
 
 三个来源标记是 `video-avatar`、`embodied-world`、`interactive-video`；初始精选为 `vigen-seed`。这三个方向标记不是调度器 ID；同一个合并任务顺序导入三个方向即可。
 
-人工阅读导入使用 `manual-reading`，不改变已有定时任务的研究范围与调度。人工导读阅读摘要（abstract）和引言（introduction）即可，不能只改写摘要。简介概括问题、核心思路、价值与适用边界；超出阅读范围的实验细节不作未经核对的断言。版本差异应明确说明；无法取得引言时暂缓收录。可在 `evidence_urls` 保留带版本号的 PDF 链接，以便追溯阅读依据。
+人工阅读导入使用 `manual-reading`，不改变已有定时任务的研究范围与调度。人工导读阅读摘要（abstract）和引言（introduction）即可，不能只改写摘要。简介概括问题、核心思路、价值与适用边界；超出阅读范围的实验细节不作未经核对的断言。版本差异应明确说明；无法取得引言时，不编写方法导读。为完整记录指定官方列表，可保留明确标为 `metadata-only` 的待补条目，并将优先级标为暂定。可在 `evidence_urls` 保留带版本号的 PDF 链接，以便追溯阅读依据。
 
 ```bash
 # 仅核验和预览合并统计，不写论文文件、不联网

@@ -24,8 +24,8 @@ test('search is case-insensitive, multi-term, and combines with category',()=>{
 });
 function fakeDocument(){
   function control(value=''){return {value,hidden:false,checked:true,events:{},addEventListener(k,f){this.events[k]=f;}};}
-  const controls=Object.fromEntries(['search','category','result-count','empty','expand','collapse','shortcuts'].map(k=>[k,control()]));
-  const cards=['Alpha 视频','Beta 系统'].map((s,i)=>({dataset:{search:s.toLowerCase(),category:i?'流式系统':'少步蒸馏'},hidden:false,detail:{open:false},querySelector(){return this.detail;}}));
+  const controls=Object.fromEntries(['search','category','priority','result-count','empty','expand','collapse','shortcuts'].map(k=>[k,control()]));
+  const cards=['Alpha 视频','Beta 系统'].map((s,i)=>({dataset:{search:s.toLowerCase(),category:i?'流式系统':'少步蒸馏',priority:i?'P2':'P0'},hidden:false,detail:{open:false},querySelector(){return this.detail;}}));
   return {cards,controls,events:{},querySelectorAll(){return cards;},getElementById(k){return controls[k];},addEventListener(k,f){this.events[k]=f;}};
 }
 test('real controller wires filters, empty state, buttons, and keyboard',()=>{
@@ -41,4 +41,17 @@ test('real controller wires filters, empty state, buttons, and keyboard',()=>{
   doc.controls.shortcuts.checked=false;doc.events.keydown(event('e',{preventDefault(){throw Error('disabled');}}));
   assert.ok(doc.cards.every(c=>!c.detail.open));
   doc.controls.collapse.events.click();assert.ok(doc.cards.every(c=>!c.detail.open));
+});
+
+test('priority combines with search and category without resetting expanded state',()=>{
+  const doc=fakeDocument();reader.init(doc);
+  doc.controls.expand.events.click();
+  doc.controls.priority.value='P0';doc.controls.priority.events.change();
+  assert.equal(doc.controls['result-count'].textContent,'1 / 2 篇论文');
+  assert.equal(doc.cards[0].hidden,false);assert.equal(doc.cards[1].hidden,true);
+  doc.controls.category.value='流式系统';doc.controls.category.events.change();
+  assert.equal(doc.controls.empty.hidden,false);
+  doc.controls.priority.value='';doc.controls.priority.events.change();
+  assert.equal(doc.cards[1].hidden,false);
+  assert.ok(doc.cards.every(c=>c.detail.open));
 });

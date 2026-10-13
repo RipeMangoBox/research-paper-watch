@@ -88,6 +88,38 @@ class CatalogueTests(unittest.TestCase):
         p = copy.deepcopy(self.seed); p['evidence_urls'] = []
         with self.assertRaises(ValueError): w.normalize(p)
 
+    def test_priority_and_venue_survive_partial_refresh(self):
+        old = copy.deepcopy(self.seed)
+        old.update(priority='P0', priority_reason='直接研究长视频一致性。', venue='ICLR 2026',
+                   venue_url='https://openreview.net/forum?id=example', reading_status='abs-intro')
+        new = copy.deepcopy(old)
+        for key in ('priority', 'priority_reason', 'venue', 'venue_url', 'reading_status'):
+            new.pop(key)
+        result = w.combine([old], [new], 'manual-reading', '2026-10-13')[0]
+        for key in ('priority', 'priority_reason', 'venue', 'venue_url', 'reading_status'):
+            self.assertEqual(result[key], old[key])
+        invalid = copy.deepcopy(old); invalid['priority'] = 'P9'
+        with self.assertRaises(ValueError): w.normalize(invalid)
+        invalid = copy.deepcopy(old); invalid['priority_reason'] = None
+        with self.assertRaises(ValueError): w.normalize(invalid)
+
+    def test_alternate_site_config_and_priority_order(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.temp_project(tmp)
+            (root/'data/site.json').write_text(json.dumps({
+                'title': 'ARC Paper Watch', 'repository': 'example/arc-paper-watch',
+                'url': 'https://example.github.io/arc-paper-watch/', 'scope': 'ARC 2024 年及以后。'
+            }), encoding='utf-8')
+            high = copy.deepcopy(self.seed); high.update(short_name='First', priority='P0', published='2024-01-01')
+            low = copy.deepcopy(self.seed); low.update(short_name='Second', priority='P2', published='2026-01-01')
+            page = w.render_html([low, high], root)
+            self.assertLess(page.index('>First<'), page.index('>Second<'))
+            self.assertIn('https://github.com/example/arc-paper-watch', page)
+            readme = w.render_readme([low, high], root)
+            self.assertIn('# ARC Paper Watch', readme)
+            self.assertIn('https://example.github.io/arc-paper-watch/', readme)
+            self.assertNotIn('ripemangobox.github.io/research-paper-watch/', readme)
+
     def test_rendered_content_escapes_plain_text(self):
         p = copy.deepcopy(self.seed); p['title'] = 'A & B "quoted"'
         page = w.render_html([w.normalize(p)])

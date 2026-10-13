@@ -22,11 +22,12 @@
     const cards = Array.from(doc.querySelectorAll('.paper'));
     const search = doc.getElementById('search');
     const category = doc.getElementById('category');
+    const priority = doc.getElementById('priority');
     const count = doc.getElementById('result-count');
     const filter = () => {
       let visible = 0;
       cards.forEach(card => {
-        card.hidden = !matches(card.dataset.search, card.dataset.category, search.value, category.value);
+        card.hidden = !matches(card.dataset.search, card.dataset.category, search.value, category.value) || !!(priority && priority.value && priority.value !== card.dataset.priority);
         if (!card.hidden) visible++;
       });
       count.textContent = `${visible} / ${cards.length} 篇论文`;
@@ -34,6 +35,7 @@
     };
     search.addEventListener('input', filter);
     category.addEventListener('change', filter);
+    if (priority) priority.addEventListener('change', filter);
     doc.getElementById('expand').addEventListener('click', () => setAll(cards, true));
     doc.getElementById('collapse').addEventListener('click', () => setAll(cards, false));
     doc.addEventListener('keydown', event => {

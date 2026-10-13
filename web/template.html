@@ -12,10 +12,11 @@
 <header><a class="brand" href="#">RP<span>W</span> <span class="brand-caption">RESEARCH PAPER WATCH</span></a><nav><a id="download" href="./index.html" download="research-paper-watch.html">下载离线版 ↓</a> · <a class="github" href="https://github.com/RipeMangoBox/research-paper-watch">GitHub ↗</a></nav></header>
 <main>
 <section class="intro" aria-labelledby="title"><div class="eyebrow"><span class="dot"></span> OPEN RESEARCH / 中文导读</div><h1 id="title">从论文，<br>看见下一步<span>。</span></h1><p class="lead">视频、三维与具身、智能体、多模态检索、评测及训练推理。<br>提炼问题与方法，也留下证据和边界。</p><div class="intro-stats"><strong><!--COUNT--></strong><span>篇公开论文</span><span class="divider"></span><span>独立中文简介 · 一手来源</span></div></section>
+<p class="hint"><!--SCOPE--><br>按课题相关性排序：P0 必读 · P1 重点 · P2 选读 · P3 暂缓；不代表论文质量评级。</p>
 <section class="reading" aria-label="论文阅读器">
-<div class="toolbar"><div class="filters"><label for="search">搜索论文<input id="search" type="search" placeholder="标题、方法、关键词或 arXiv ID" autocomplete="off"></label><label for="category">研究方向<select id="category"><option value="">全部方向</option><!--OPTIONS--></select></label></div>
+<div class="toolbar"><div class="filters"><label for="search">搜索论文<input id="search" type="search" placeholder="标题、方法、关键词或 arXiv ID" autocomplete="off"></label><label for="category">研究方向<select id="category"><option value="">全部方向</option><!--OPTIONS--></select></label><label for="priority">阅读优先级<select id="priority"><option value="">全部优先级</option><option value="P0">P0 必读</option><option value="P1">P1 重点</option><option value="P2">P2 选读</option><option value="P3">P3 暂缓</option></select></label></div>
 <div class="controls"><button type="button" id="expand" aria-keyshortcuts="e">全部展开 <kbd>E</kbd></button><button type="button" id="collapse" aria-keyshortcuts="c">全部收起 <kbd>C</kbd></button><label class="shortcut-toggle"><input id="shortcuts" type="checkbox" checked>启用快捷键</label></div></div>
-<div class="list-caption"><span id="result-count" role="status" aria-live="polite"><!--COUNT--> 篇论文</span><span>按首次公开日期排列</span></div>
+<div class="list-caption"><span id="result-count" role="status" aria-live="polite"><!--COUNT--> 篇论文</span><span>优先级优先 · 同级按首次公开日期</span></div>
 <div id="papers" tabindex="-1"><!--CARDS--></div>
 <p id="empty" hidden>没有匹配的论文，试试其他关键词或研究方向。</p>
 <p class="hint">单篇简介可用 Tab 聚焦后按 Enter 或空格。输入时或按组合键时不会触发 E / C；快捷键可随时关闭。</p>
