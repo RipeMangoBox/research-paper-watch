@@ -15,16 +15,16 @@
 - [交互长视频](#交互长视频) · 7
 - [流式系统](#流式系统) · 2
 - [具身与世界模型](#具身与世界模型) · 11
-- [交互 Avatar](#交互 Avatar) · 1
+- [交互 Avatar](#交互-avatar) · 1
 
 ## 视频生成基础
 
 + [Connected Self Forcing: Beyond Local Learning in Video Autoregression](<https://arxiv.org/abs/2610.12156>)<br>
-  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.12156>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://eastbeanzhang.github.io/CSF>)
+  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.12156>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://eastbeanzhang.github.io/CSF>)
   <br>2026-10-08 · 视频生成基础
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：局部自回归训练截断历史梯度，早期生成难获后续误差信号。
   - **方法**：使用快捷梯度重放连接历史潜变量及注意力缓存。
@@ -37,11 +37,11 @@
   </details>
 
 + [SGF+: Decoupling Gradient Flows for Autoregressive Video Generation](<https://arxiv.org/abs/2610.10429>)<br>
-  [![Star](https://img.shields.io/github/stars/Zihan-Su/Self_Gradient_Forcing_Plus.svg?style=social&label=Star)](<https://github.com/Zihan-Su/Self_Gradient_Forcing_Plus>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.10429>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://zihan-su.github.io/self-gradient-forcing-plus>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/ZihanSu/Self_Gradient_Forcing_Plus>)
+  [![Star](https://img.shields.io/github/stars/Zihan-Su/Self_Gradient_Forcing_Plus.svg?style=social&label=Star)](<https://github.com/Zihan-Su/Self_Gradient_Forcing_Plus>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.10429>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://zihan-su.github.io/self-gradient-forcing-plus>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/ZihanSu/Self_Gradient_Forcing_Plus>)
   <br>2026-10-07 · 视频生成基础
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：自回归视频中缓存写入与当前去噪的梯度目标可能冲突。
   - **方法**：分离写入器和去噪器参数，再通过因果注意力联合训练。
@@ -54,11 +54,11 @@
   </details>
 
 + [Diffusion Forcing: Next-token Prediction Meets Full-Sequence Diffusion](<https://arxiv.org/abs/2407.01392>)<br>
-  [![Star](https://img.shields.io/github/stars/buoyancy99/diffusion-forcing.svg?style=social&label=Star)](<https://github.com/buoyancy99/diffusion-forcing>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2407.01392>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://www.boyuan.space/diffusion-forcing>)
+  [![Star](https://img.shields.io/github/stars/buoyancy99/diffusion-forcing.svg?style=social&label=Star)](<https://github.com/buoyancy99/diffusion-forcing>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2407.01392>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://www.boyuan.space/diffusion-forcing>)
   <br>2024-07-01 · 序列建模 / 独立噪声 / 规划
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：序列预测的灵活长度与整段扩散的引导能力难以兼得。
   - **方法**：训练时为各个序列元素独立设置噪声等级，以因果模型学习不同噪声组合下的去噪。
@@ -74,11 +74,11 @@
 ## 少步蒸馏
 
 + [Causal Forcing: Autoregressive Diffusion Distillation Done Right for High-Quality Real-Time Interactive Video Generation](<https://arxiv.org/abs/2602.02214>)<br>
-  [![Star](https://img.shields.io/github/stars/thu-ml/Causal-Forcing.svg?style=social&label=Star)](<https://github.com/thu-ml/Causal-Forcing>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2602.02214>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://thu-ml.github.io/CausalForcing.github.io>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/zhuhz22/Causal-Forcing/tree/main>)
+  [![Star](https://img.shields.io/github/stars/thu-ml/Causal-Forcing.svg?style=social&label=Star)](<https://github.com/thu-ml/Causal-Forcing>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2602.02214>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://thu-ml.github.io/CausalForcing.github.io>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/zhuhz22/Causal-Forcing/tree/main>)
   <br>2026-02-02 · ODE 初始化 / 交互视频 / 因果教师
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：双向教师的轨迹初始化与因果学生存在结构不匹配。
   - **方法**：先训练自回归教师，再用因果常微分方程轨迹初始化少步学生，随后进行非对称分布匹配蒸馏。
@@ -91,11 +91,11 @@
   </details>
 
 + [Self Forcing: Bridging the Train-Test Gap in Autoregressive Video Diffusion](<https://arxiv.org/abs/2506.08009>)<br>
-  [![Star](https://img.shields.io/github/stars/guandeh17/Self-Forcing.svg?style=social&label=Star)](<https://github.com/guandeh17/Self-Forcing>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2506.08009>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://self-forcing.github.io/>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/gdhe17/Self-Forcing/tree/main>)
+  [![Star](https://img.shields.io/github/stars/guandeh17/Self-Forcing.svg?style=social&label=Star)](<https://github.com/guandeh17/Self-Forcing>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2506.08009>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://self-forcing.github.io/>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/gdhe17/Self-Forcing/tree/main>)
   <br>2025-06-09 · 分布匹配 / 自生成历史 / 训练推理对齐
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：真实历史训练与模型生成历史推理之间的偏差会累积。
   - **方法**：训练中直接自回归展开并缓存自生成历史，用整段视频损失监督，配合少步去噪与随机梯度截断。
@@ -108,11 +108,11 @@
   </details>
 
 + [From Slow Bidirectional to Fast Autoregressive Video Diffusion Models](<https://arxiv.org/abs/2412.07772>)<br>
-  [![Star](https://img.shields.io/github/stars/tianweiy/CausVid.svg?style=social&label=Star)](<https://github.com/tianweiy/CausVid>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2412.07772>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://causvid.github.io/>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/tianweiy/CausVid/tree/main/autoregressive_checkpoint>)
+  [![Star](https://img.shields.io/github/stars/tianweiy/CausVid.svg?style=social&label=Star)](<https://github.com/tianweiy/CausVid>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2412.07772>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://causvid.github.io/>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/tianweiy/CausVid/tree/main/autoregressive_checkpoint>)
   <br>2024-12-10 · DMD / KV cache / 自回归
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：双向视频扩散依赖未来帧，难以低延迟逐帧生成。
   - **方法**：通过教师轨迹初始化、非对称分布匹配蒸馏及因果注意力，将多步模型转为少步自回归生成器。
@@ -129,7 +129,7 @@
   <br>2023-12-14 · 一致性蒸馏 / 少步采样 / 文生视频 / 潜空间
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：视频扩散多步采样成本高。
   - **方法**：在潜空间用冻结教师的DDIM轨迹配对和EMA学生目标做一致性蒸馏。
@@ -149,7 +149,7 @@
   <br>2026-10-08 · 交互长视频
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：流式视频滑动窗口会丢失中期历史，使早先内容难以延续。
   - **方法**：划分锚点、档案和工作缓存，结合历史选择与分库位置编码。
@@ -166,7 +166,7 @@
   <br>2026-10-05 · 交互长视频
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：长视频空间记忆随历史增长而膨胀，重复视角挤占有限缓存。
   - **方法**：用姿态与外观图选择固定容量记忆，淘汰可被替代的观测。
@@ -179,11 +179,11 @@
   </details>
 
 + [LoGo: Local-Global Rewards for Consistent Long-Horizon Video Generation](<https://arxiv.org/abs/2610.03636>)<br>
-  [![Star](https://img.shields.io/github/stars/ziqi-ma/logo.svg?style=social&label=Star)](<https://github.com/ziqi-ma/logo>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.03636>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://ziqi-ma.github.io/logo-website>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/ziqima/LoGo>)
+  [![Star](https://img.shields.io/github/stars/ziqi-ma/logo.svg?style=social&label=Star)](<https://github.com/ziqi-ma/logo>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.03636>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://ziqi-ma.github.io/logo-website>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/ziqima/LoGo>)
   <br>2026-10-02 · 交互长视频
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：长时视频的局部画面质量与全局三维一致性往往难以兼顾。
   - **方法**：组合局部与全局几何奖励，对视频生成模型进行后训练。
@@ -200,7 +200,7 @@
   <br>2026-10-02 · 交互长视频
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：交互长视频需要重组历史人物与背景，单一记忆难以匹配。
   - **方法**：以语义槽和区域掩码路由历史缓存，并自适应调整位置编码。
@@ -213,11 +213,11 @@
   </details>
 
 + [MosaiChunk: Compositing Spatio-Temporal Memory for Autoregressive Video Generation](<https://arxiv.org/abs/2610.02153>)<br>
-  [![Star](https://img.shields.io/github/stars/mosaichunk/MosaiChunk.svg?style=social&label=Star)](<https://github.com/mosaichunk/MosaiChunk>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.02153>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://mosaichunk.github.io/>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/mosaichunk/MosaiChunk>)
+  [![Star](https://img.shields.io/github/stars/mosaichunk/MosaiChunk.svg?style=social&label=Star)](<https://github.com/mosaichunk/MosaiChunk>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.02153>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://mosaichunk.github.io/>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/mosaichunk/MosaiChunk>)
   <br>2026-10-01 · 交互长视频
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：自回归视频有限缓存难以记住离开视野后再次出现的场景。
   - **方法**：冻结生成器，训练轻量路由器组合历史时空片段的注意力缓存。
@@ -230,11 +230,11 @@
   </details>
 
 + [Rolling Forcing: Autoregressive Long Video Diffusion in Real Time](<https://arxiv.org/abs/2509.25161>)<br>
-  [![Star](https://img.shields.io/github/stars/TencentARC/RollingForcing.svg?style=social&label=Star)](<https://github.com/TencentARC/RollingForcing>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2509.25161>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://kunhao-liu.github.io/Rolling_Forcing_Webpage>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/TencentARC/RollingForcing>)
+  [![Star](https://img.shields.io/github/stars/TencentARC/RollingForcing.svg?style=social&label=Star)](<https://github.com/TencentARC/RollingForcing>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2509.25161>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://kunhao-liu.github.io/Rolling_Forcing_Webpage>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/TencentARC/RollingForcing>)
   <br>2025-09-29 · 注意力锚点 / 滚动窗口 / 长视频
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：逐帧生成的误差容易在长视频中持续传播。
   - **方法**：在滚动窗口内联合去噪不同噪声等级的帧，保留初始帧缓存作全局锚点，并以非重叠窗口训练。
@@ -247,11 +247,11 @@
   </details>
 
 + [LongLive: Real-time Interactive Long Video Generation](<https://arxiv.org/abs/2509.22622>)<br>
-  [![Star](https://img.shields.io/github/stars/NVlabs/LongLive.svg?style=social&label=Star)](<https://github.com/NVlabs/LongLive>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2509.22622>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://nvlabs.github.io/LongLive>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/Efficient-Large-Model/LongLive-1.3B>)
+  [![Star](https://img.shields.io/github/stars/NVlabs/LongLive.svg?style=social&label=Star)](<https://github.com/NVlabs/LongLive>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2509.22622>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://nvlabs.github.io/LongLive>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/Efficient-Large-Model/LongLive-1.3B>)
   <br>2025-09-26 · KV recache / 提示词切换 / 长时训练
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：长视频既要保持一致性，也要及时响应用户提示变化。
   - **方法**：用提示切换时的缓存重算、流式长时训练，以及短窗口注意力和帧锚点维持生成状态。
@@ -267,11 +267,11 @@
 ## 流式系统
 
 + [Real-Time Joint Audio-Video Generation by Parallel Adapter Composition](<https://arxiv.org/abs/2610.10343>)<br>
-  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.10343>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://pac-demo-2027.github.io/demo>)
+  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.10343>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://pac-demo-2027.github.io/demo>)
   <br>2026-10-07 · 流式系统
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：联合音视频生成难以同时获得跨模态同步与少步推理。
   - **方法**：冻结主干，将因果音视频适配器与少步适配器并行组合。
@@ -284,11 +284,11 @@
   </details>
 
 + [StreamDiffusionV2: A Streaming System for Dynamic and Interactive Video Generation](<https://arxiv.org/abs/2511.07399>)<br>
-  [![Star](https://img.shields.io/github/stars/chenfengxu714/StreamDiffusionV2.svg?style=social&label=Star)](<https://github.com/chenfengxu714/StreamDiffusionV2>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2511.07399>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://streamdiffusionv2.github.io/>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/jerryfeng/StreamDiffusionV2>)
+  [![Star](https://img.shields.io/github/stars/chenfengxu714/StreamDiffusionV2.svg?style=social&label=Star)](<https://github.com/chenfengxu714/StreamDiffusionV2>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2511.07399>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://streamdiffusionv2.github.io/>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/jerryfeng/StreamDiffusionV2>)
   <br>2025-11-10 · 多 GPU / 实时视频 / 系统调度
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：离线吞吐优化难以满足直播首帧延迟与逐帧截止时间。
   - **方法**：通过延迟目标感知调度、滚动缓存与跨去噪步骤和网络层的流水线组织视频扩散推理。
@@ -304,11 +304,11 @@
 ## 具身与世界模型
 
 + [Dex-One2Many: Learning Dexterous Manipulation from a Single Human Demonstration](<https://arxiv.org/abs/2610.12470>)<br>
-  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.12470>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://dex-one2many.github.io/>)
+  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.12470>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://dex-one2many.github.io/>)
   <br>2026-10-08 · 具身与世界模型
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：单个人类示范难以覆盖灵巧操作所需的场景与动作变化。
   - **方法**：从视频提取场景图，构造多样仿真初态和奖励并训练强化策略。
@@ -321,11 +321,11 @@
   </details>
 
 + [DreamTrue: Action-Faithful Robot World Model with Counterfactual Post-Training](<https://arxiv.org/abs/2610.12468>)<br>
-  [![Star](https://img.shields.io/github/stars/brave-eai/DreamTrue.svg?style=social&label=Star)](<https://github.com/brave-eai/DreamTrue>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.12468>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://brave-eai.github.io/DreamTrue>)
+  [![Star](https://img.shields.io/github/stars/brave-eai/DreamTrue.svg?style=social&label=Star)](<https://github.com/brave-eai/DreamTrue>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.12468>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://brave-eai.github.io/DreamTrue>)
   <br>2026-10-08 · 具身与世界模型
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：机器人世界模型可能生成视觉合理却不忠实于输入动作的结果。
   - **方法**：结合多视角几何校准、缺陷奖励及反事实强化后训练。
@@ -338,11 +338,11 @@
   </details>
 
 + [RoboRSI: Stable, efficient, and reusable robot self-evolution in complex real-world environments](<https://arxiv.org/abs/2610.12424>)<br>
-  [![Star](https://img.shields.io/github/stars/nssmd/RoboRSI.svg?style=social&label=Star)](<https://github.com/nssmd/RoboRSI>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.12424>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://lab.noematrix.ai/blog/2-roborsi>)
+  [![Star](https://img.shields.io/github/stars/nssmd/RoboRSI.svg?style=social&label=Star)](<https://github.com/nssmd/RoboRSI>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.12424>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://lab.noematrix.ai/blog/2-roborsi>)
   <br>2026-10-08 · 具身与世界模型
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：复杂真实环境中的机器人需从失败中修正程序并复用经验。
   - **方法**：通过执行反馈迭代代码与技能，在连续任务中积累可用方案。
@@ -359,7 +359,7 @@
   <br>2026-10-08 · 具身与世界模型
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：机载导航需评估多个候选路径，但世界模型计算预算有限。
   - **方法**：共享视觉特征编码，用多时域潜在预测评估候选动作轨迹。
@@ -372,11 +372,11 @@
   </details>
 
 + [PLaW-VLA: Predictive Latent World Modeling for Vision-Language-Action Policies](<https://arxiv.org/abs/2610.12285>)<br>
-  [![Star](https://img.shields.io/github/stars/RainyRobo/PLaW-VLA.svg?style=social&label=Star)](<https://github.com/RainyRobo/PLaW-VLA>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.12285>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://rainyrobo.github.io/PLaW-VLA>)
+  [![Star](https://img.shields.io/github/stars/RainyRobo/PLaW-VLA.svg?style=social&label=Star)](<https://github.com/RainyRobo/PLaW-VLA>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.12285>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://rainyrobo.github.io/PLaW-VLA>)
   <br>2026-10-08 · 具身与世界模型
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：视觉语言动作策略需要提前感知未来，当前观测不足以规划。
   - **方法**：在冻结视觉编码器空间预测未来状态，由动作专家联合读取。
@@ -393,7 +393,7 @@
   <br>2026-10-08 · 具身与世界模型
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：机器人策略遇到失误后缺少可靠的触发机制与恢复控制。
   - **方法**：以动作采样分歧触发成功经验检索，并执行带约束的纠正动作。
@@ -410,7 +410,7 @@
   <br>2026-10-08 · 具身与世界模型
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：二维视觉与动作表示分离，难以统一建模空间变化和控制。
   - **方法**：在统一度量空间建模三维场景与动作点轨迹，使用双专家流模型。
@@ -427,7 +427,7 @@
   <br>2026-10-07 · 具身与世界模型
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：像素世界模型规划成本高，潜空间模型的规模收益尚待检验。
   - **方法**：扩展机器人潜在预测模型，以目标图像引导闭环动作规划。
@@ -440,11 +440,11 @@
   </details>
 
 + [DepthWorld: 3D World Model for Robot Manipulation](<https://arxiv.org/abs/2610.08780>)<br>
-  [![Star](https://img.shields.io/github/stars/Jai2500/depthworld.svg?style=social&label=Star)](<https://github.com/Jai2500/depthworld>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.08780>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://jaibardhan.com/depthworld>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/jaibrdhn/depthworld>)
+  [![Star](https://img.shields.io/github/stars/Jai2500/depthworld.svg?style=social&label=Star)](<https://github.com/Jai2500/depthworld>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.08780>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://jaibardhan.com/depthworld>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/jaibrdhn/depthworld>)
   <br>2026-10-06 · 具身与世界模型
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：机器人视频世界模型容易产生跨视角不一致的三维几何。
   - **方法**：重新校准多视角数据，联合预测动作条件下的彩色图像与深度。
@@ -457,11 +457,11 @@
   </details>
 
 + [OpenWAM: An Open Framework for Composable World-Action Models](<https://arxiv.org/abs/2610.07922>)<br>
-  [![Star](https://img.shields.io/github/stars/OpenWAM/OpenWAM.svg?style=social&label=Star)](<https://github.com/OpenWAM/OpenWAM>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.07922>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://openwam.stanford.edu/>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/OpenWAM-Stanford/OpenWAM-Pretraining>)
+  [![Star](https://img.shields.io/github/stars/OpenWAM/OpenWAM.svg?style=social&label=Star)](<https://github.com/OpenWAM/OpenWAM>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.07922>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://openwam.stanford.edu/>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/OpenWAM-Stanford/OpenWAM-Pretraining>)
   <br>2026-10-06 · 具身与世界模型
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：世界模型与动作策略常各自训练，组件难以跨任务组合复用。
   - **方法**：共享因果视频骨干，比较视频动作生成顺序并组合正逆动力学。
@@ -474,11 +474,11 @@
   </details>
 
 + [PointWAM: 3D World Action Modeling for Dexterous Robotic Manipulation](<https://arxiv.org/abs/2610.02840>)<br>
-  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.02840>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://chrockey.github.io/PointWAM>)
+  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.02840>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://chrockey.github.io/PointWAM>)
   <br>2026-10-02 · 具身与世界模型
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：灵巧操作需要理解三维场景变化，单纯动作模仿难以迁移。
   - **方法**：联合预测场景点与手部关键点，再将动作重定向到机器人。
@@ -494,11 +494,11 @@
 ## 交互 Avatar
 
 + [PixReenact: Pixel-Conditioned Causal Video Diffusion for Streaming Head-Avatar Reenactment](<https://arxiv.org/abs/2610.05233>)<br>
-  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.05233>) [![Website](https://img.shields.io/badge/Website-9cf.svg)](<https://gavriel-habib.github.io/pixreenact>)
+  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2610.05233>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://gavriel-habib.github.io/pixreenact>)
   <br>2026-10-04 · 交互 Avatar
 
   <details>
-  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>
+  <summary>brief</summary>
 
   - **问题**：流式头像重演需同时维持身份和跟随驱动视频的头部运动。
   - **方法**：采用像素条件因果扩散、跨身份伪监督及双教师蒸馏。

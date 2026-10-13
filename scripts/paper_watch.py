@@ -263,7 +263,7 @@ def paper_badges(p):
             badges.append(('Code', 'https://img.shields.io/badge/Code-181717.svg', code))
     label = 'arXiv' if p['arxiv_id'] else 'Paper'
     badges.append((label, f'https://img.shields.io/badge/{label}-b31b1b.svg', p['paper_url']))
-    for key, label, color in [('project', 'Website', '9cf'), ('weights', 'Weights', 'yellow')]:
+    for key, label, color in [('project', 'Project', '9cf'), ('weights', 'Weights', 'yellow')]:
         if p['links'][key]:
             badges.append((label, f'https://img.shields.io/badge/{label}-{color}.svg', p['links'][key]))
     return badges
@@ -289,7 +289,8 @@ def render_readme(papers):
     for category in CATEGORIES:
         count = sum(p['category'] == category for p in papers)
         if count:
-            out.append(f'- [{category}](#{category}) · {count}')
+            anchor = category.lower().replace(' ', '-')
+            out.append(f'- [{category}](#{anchor}) · {count}')
     for category in CATEGORIES:
         group = [p for p in papers if p['category'] == category]
         if not group:
@@ -299,7 +300,7 @@ def render_readme(papers):
             out += [f'+ {markdown_link(p["title"], p["paper_url"])}<br>',
                     '  ' + ' '.join(f'[![{label}]({image})](<{url}>)' for label, image, url in paper_badges(p)),
                     f'  <br>{p["published"] or "日期待核实"} · {esc(" / ".join(p["tags"]))}', '',
-                    '  <details>', '  <summary>中文简介：问题 · 方法 · 价值 · 局限</summary>', '']
+                    '  <details>', '  <summary>brief</summary>', '']
             for key, label in PARTS.items():
                 out.append(f'  - **{label}**：{esc(p["summary"][key])}')
             out += ['', '  来源：' + ' · '.join(f'<a href="{esc(u)}">[{i+1}]</a>' for i, u in enumerate(p['evidence_urls'])),
@@ -322,7 +323,7 @@ def render_html(papers, root=ROOT):
 <div class="paper-meta"><span>{esc(p['category'])}</span><time>{p['published'] or '日期待核实'}</time><span class="number">{index:02d}</span></div>
 <h2><a href="{esc(p['paper_url'])}">{esc(p['short_name'])}</a></h2><p class="paper-title"><a href="{esc(p['paper_url'])}">{esc(p['title'])}</a></p>
 <p class="links">{paper_links(p)}</p>
-<details><summary>中文简介 <span aria-hidden="true">＋</span></summary><div class="abstract">{paragraphs}<p class="evidence">{citations} · 核验 {p['verified_at']}</p></div></details>
+<details><summary>brief <span aria-hidden="true">＋</span></summary><div class="abstract">{paragraphs}<p class="evidence">{citations} · 核验 {p['verified_at']}</p></div></details>
 </article>''')
     options = ''.join(f'<option value="{esc(c)}">{esc(c)}</option>' for c in CATEGORIES)
     template = (root / 'web/template.html').read_text()
