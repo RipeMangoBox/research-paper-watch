@@ -1698,7 +1698,7 @@
 
   </details>
 
-+ [ChartE$^3$: A Comprehensive Benchmark for End-to-End Chart Editing](<https://arxiv.org/abs/2601.21694>)<br>
++ [ChartE3: A Comprehensive Benchmark for End-to-End Chart Editing](<https://arxiv.org/abs/2601.21694>)<br>
   [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2601.21694>)
   <br>2026-01-29 · 图表编辑 / 生成评估 / 结构一致性
 
@@ -2522,7 +2522,7 @@
 
   </details>
 
-+ [Multimodal Dual-Path Decoding for Medical Report Generation](<https://aclanthology.org/2026.findings-acl.1997.pdf>)<br>
++ [Multimodal Dual-Path Large-Model Decoding for Radiology Report Generation](<https://aclanthology.org/2026.findings-acl.1997.pdf>)<br>
   [![Paper](https://img.shields.io/badge/Paper-b31b1b.svg)](<https://aclanthology.org/2026.findings-acl.1997.pdf>)
   <br>日期待核实 · 多模态融合 / 联合解码 / 领域应用
 

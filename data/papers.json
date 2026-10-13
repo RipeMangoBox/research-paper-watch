@@ -3439,8 +3439,8 @@
       ]
     },
     {
-      "title": "ChartE$^3$: A Comprehensive Benchmark for End-to-End Chart Editing",
-      "short_name": "ChartE$^3$",
+      "title": "ChartE3: A Comprehensive Benchmark for End-to-End Chart Editing",
+      "short_name": "ChartE3",
       "published": "2026-01-29",
       "category": "评测与可靠性",
       "tags": [
@@ -4716,7 +4716,7 @@
       ]
     },
     {
-      "title": "Multimodal Dual-Path Decoding for Medical Report Generation",
+      "title": "Multimodal Dual-Path Large-Model Decoding for Radiology Report Generation",
       "short_name": "Dual-Path Radiology Report Generation",
       "published": null,
       "category": "领域应用",
