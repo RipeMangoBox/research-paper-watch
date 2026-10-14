@@ -2,7 +2,7 @@
 
 公开论文精选：视频、三维与具身、智能体、多模态检索、评测及训练推理。每篇附可折叠中文简介与一手来源。
 
-**124 篇论文** · [在线阅读（支持快捷键）](https://ripemangobox.github.io/research-paper-watch/) · [下载离线阅读器 ZIP](https://ripemangobox.github.io/research-paper-watch/research-paper-watch.zip) · [唯一数据源](data/papers.json) · [导入与任务接入](docs/INTEGRATION.md)
+**139 篇论文** · [在线阅读（支持快捷键）](https://ripemangobox.github.io/research-paper-watch/) · [下载离线阅读器 ZIP](https://ripemangobox.github.io/research-paper-watch/research-paper-watch.zip) · [唯一数据源](data/papers.json) · [导入与任务接入](docs/INTEGRATION.md)
 研究目标：视频生成核心难题、实时交互 Avatar、世界模型、Agent 规划与记忆。会议与期刊按已核实来源标注，无法确认时显示录用待核实。
 
 阅读优先级依据视频生成核心难题、实时交互 Avatar、世界模型、Agent 规划与记忆：**P0 必读 → P1 重点 → P2 选读 → P3 暂缓**。这是课题相关性排序，不是论文质量排名。每篇说明推荐理由；常规阅读范围为 abs + intro。
@@ -14,12 +14,12 @@
 
 ## 目录
 
-- [视频生成基础](#视频生成基础) · 9
-- [少步蒸馏](#少步蒸馏) · 4
+- [视频生成基础](#视频生成基础) · 10
+- [少步蒸馏](#少步蒸馏) · 14
 - [交互长视频](#交互长视频) · 9
 - [流式系统](#流式系统) · 2
-- [具身与世界模型](#具身与世界模型) · 14
-- [交互 Avatar](#交互-avatar) · 4
+- [具身与世界模型](#具身与世界模型) · 15
+- [交互 Avatar](#交互-avatar) · 7
 - [智能体与上下文](#智能体与上下文) · 20
 - [多模态检索](#多模态检索) · 6
 - [评测与可靠性](#评测与可靠性) · 20
@@ -214,8 +214,108 @@
 
   </details>
 
++ [Generative Omnimatte: Learning to Decompose Video into Layers](<https://arxiv.org/abs/2411.16683>)<br>
+  [![Star](https://img.shields.io/github/stars/gen-omnimatte/gen-omnimatte-public.svg?style=social&label=Star)](<https://github.com/gen-omnimatte/gen-omnimatte-public>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2411.16683>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://gen-omnimatte.github.io/>)
+  <br>2024-11-25 · 对象分层 / 生成先验 / 视频编辑 / 遮挡补全 / 阴影反射
+
+  **[CVPR 2025 Highlight](<https://openaccess.thecvf.com/content/CVPR2025/html/Lee_Generative_Omnimatte_Learning_to_Decompose_Video_into_Layers_CVPR_2025_paper.html>)** · **P1 重点** · 摘要与引言
+  对象与其物理效应共同分层，可启发可控视频编辑和世界状态表示；当前任务偏离实时生成主线。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：传统视频分层依赖静态背景，且难以补全遮挡与关联阴影。
+  - **方法**：微调视频修复模型去除对象及其效应，再以重建和稀疏约束优化前景图层。
+  - **价值**：生成先验支持动态背景、遮挡补全和对象级编辑。
+  - **局限**：仍需对象掩码及逐视频优化；公开代码是论文方法的重新实现。
+
+  来源：<a href="https://arxiv.org/abs/2411.16683">[1]</a> · <a href="https://gen-omnimatte.github.io/">[2]</a> · <a href="https://github.com/gen-omnimatte/gen-omnimatte-public">[3]</a> · <a href="https://openaccess.thecvf.com/content/CVPR2025/html/Lee_Generative_Omnimatte_Learning_to_Decompose_Video_into_Layers_CVPR_2025_paper.html">[4]</a> · <a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Generative_Omnimatte_Learning_to_Decompose_Video_into_Layers_CVPR_2025_paper.pdf">[5]</a>
+  核验：2026-10-14
+
+  </details>
+
 
 ## 少步蒸馏
+
++ [Uncertainty DMD: Restoring Diversity in Few-Step Autoregressive Video Distillation](<https://arxiv.org/abs/2609.11265>)<br>
+  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2609.11265>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://scdzx.github.io/Uncertainty-DMD>)
+  <br>2026-09-10 · DMD / KV缓存 / 不确定性 / 多样性 / 自回归视频
+
+  **[SIGGRAPH Asia 2026](<https://scdzx.github.io/Uncertainty-DMD>)** · **P0 必读** · 摘要与引言
+  首片段与缓存两处的不确定性丢失直接影响世界模型的多未来分支，应与 Salt 的稳定性约束一起读。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：少步自回归生成的首片段趋同，确定性缓存进一步锁死后续动态。
+  - **方法**：对首片段时间步和后续缓存写入注入结构化随机性，训练与推理使用相同扰动。
+  - **价值**：从生成起点及历史传播两处恢复多样性。
+  - **局限**：需同步调整训练和推理；随机分支增加不代表动作条件更准确。
+
+  来源：<a href="https://arxiv.org/abs/2609.11265">[1]</a> · <a href="https://arxiv.org/pdf/2609.11265v1">[2]</a> · <a href="https://scdzx.github.io/Uncertainty-DMD">[3]</a>
+  核验：2026-10-14
+
+  </details>
+
++ [Data-Forcing Distillation: Restoring Diversity and Fidelity in Few-Step Video Generation](<https://arxiv.org/abs/2606.18478>)<br>
+  [![Star](https://img.shields.io/github/stars/csy2077/data-forcing-distillation.svg?style=social&label=Star)](<https://github.com/csy2077/data-forcing-distillation>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2606.18478>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://csy2077.github.io/dfd-project-page>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/csusupergear/wan_t2v_checkpoints_release>)
+  <br>2026-06-16 · DMD / 后训练 / 多样性 / 真实数据 / 过饱和
+
+  **arXiv 预印本（录用待核实）** · **P0 必读** · 摘要与引言
+  直接处理视频蒸馏的模式丢失与过饱和，适合与纯教师分布匹配方法对照。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：反向散度匹配易遗漏真实视频模式并产生过饱和输出。
+  - **方法**：将真实视频送入教师评分分支，通过真实样本与生成样本的教师分数差修正蒸馏方向。
+  - **价值**：用直接数据引导替代额外对抗判别器，改善多样性与外观。
+  - **局限**：依赖真实视频及其覆盖，不能归入完全无数据蒸馏。
+
+  来源：<a href="https://arxiv.org/abs/2606.18478">[1]</a> · <a href="https://arxiv.org/pdf/2606.18478v2">[2]</a> · <a href="https://csy2077.github.io/dfd-project-page">[3]</a> · <a href="https://github.com/csy2077/data-forcing-distillation">[4]</a> · <a href="https://huggingface.co/csusupergear/wan_t2v_checkpoints_release">[5]</a>
+  核验：2026-10-14
+
+  </details>
+
++ [SGMD: Score Gradient Matching Distillation for Few-Step Video Diffusion Distillation](<https://arxiv.org/abs/2605.30116>)<br>
+  [![Star](https://img.shields.io/github/stars/ModelTC/LightX2V.svg?style=social&label=Star)](<https://github.com/ModelTC/LightX2V>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2605.30116>)
+  <br>2026-05-28 · DMD / Fisher散度 / critic跟踪 / 训练效率 / 运动动态
+
+  **[ICML 2026](<https://proceedings.mlr.press/v306/wu26q.html>)** · **P0 必读** · 摘要与引言
+  优先研究生成器与 fake score 的耦合更新，兼顾视频运动保留与蒸馏训练成本。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：蒸馏中学生分布变化快，评分网络跟踪昂贵且运动易受抑制。
+  - **方法**：以教师停梯度的 Fisher 目标，配合外层负残差校正和内层残差收缩协同更新。
+  - **价值**：减少评分网络更新负担，为四步视频保留更丰富动态。
+  - **局限**：梯度解释依赖理想跟踪，实际滞后仍需用校正机制处理。
+
+  来源：<a href="https://arxiv.org/abs/2605.30116">[1]</a> · <a href="https://arxiv.org/pdf/2605.30116v2">[2]</a> · <a href="https://github.com/ModelTC/LightX2V/blob/main/lightx2v_train/lightx2v_train/trainers/sgmd.py">[3]</a> · <a href="https://proceedings.mlr.press/v306/wu26q.html">[4]</a>
+  核验：2026-10-14
+
+  </details>
+
++ [Salt: Self-Consistent Distribution Matching with Cache-Aware Training for Fast Video Generation](<https://arxiv.org/abs/2604.03118>)<br>
+  [![Star](https://img.shields.io/github/stars/XingtongGe/Salt.svg?style=social&label=Star)](<https://github.com/XingtongGe/Salt>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2604.03118>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://xingtongge.github.io/Salt>)
+  <br>2026-04-03 · DMD / KV缓存 / 自一致性 / 自回归视频 / 长时一致性
+
+  **[ECCV 2026](<https://arxiv.org/abs/2604.03118>)** · **P0 必读** · 摘要与引言
+  同时针对去噪步之间的组合误差和跨片段缓存误差，是实时长视频与交互世界模型的直接方法参考。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：局部分布匹配没有约束连续去噪步的组合，误差还会经缓存传播。
+  - **方法**：加入端点自一致性正则，混合不同步数的自回归展开，并做缓存条件特征对齐。
+  - **价值**：使低步数生成适应不同质量历史，改善长序列稳定性。
+  - **局限**：需要训练期展开与跨步监督，不能当作免训练缓存修补。
+
+  来源：<a href="https://arxiv.org/abs/2604.03118">[1]</a> · <a href="https://arxiv.org/pdf/2604.03118v2">[2]</a> · <a href="https://github.com/XingtongGe/Salt">[3]</a> · <a href="https://xingtongge.github.io/Salt">[4]</a>
+  核验：2026-10-14
+
+  </details>
 
 + [Causal Forcing: Autoregressive Diffusion Distillation Done Right for High-Quality Real-Time Interactive Video Generation](<https://arxiv.org/abs/2602.02214>)<br>
   [![Star](https://img.shields.io/github/stars/thu-ml/Causal-Forcing.svg?style=social&label=Star)](<https://github.com/thu-ml/Causal-Forcing>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2602.02214>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://thu-ml.github.io/CausalForcing.github.io>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/zhuhz22/Causal-Forcing/tree/main>)
@@ -234,6 +334,46 @@
 
   来源：<a href="https://arxiv.org/abs/2602.02214">[1]</a> · <a href="https://arxiv.org/pdf/2602.02214">[2]</a> · <a href="https://github.com/thu-ml/Causal-Forcing">[3]</a> · <a href="https://huggingface.co/zhuhz22/Causal-Forcing/tree/main">[4]</a> · <a href="https://thu-ml.github.io/CausalForcing.github.io">[5]</a>
   核验：2026-10-13
+
+  </details>
+
++ [Phased DMD: Few-step Distribution Matching Distillation via Score Matching within Subintervals](<https://arxiv.org/abs/2510.27684>)<br>
+  [![Star](https://img.shields.io/github/stars/ModelTC/LightX2V-Wan2.2-Lightning.svg?style=social&label=Star)](<https://github.com/ModelTC/LightX2V-Wan2.2-Lightning>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2510.27684>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://x-niper.github.io/projects/Phased-DMD>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/lightx2v/Wan2.2-Lightning/tree/main/Wan2.2-T2V-A14B-4steps-lora-250928>)
+  <br>2025-10-31 · DMD / MoE / SNR分段 / 少步生成 / 相机运动 / 运动动态
+
+  **[CVPR 2026](<https://openaccess.thecvf.com/content/CVPR2026/html/Fan_Phased_DMD_Few-step_Distribution_Matching_Distillation_via_Score_Matching_within_CVPR_2026_paper.html>)** · **P0 必读** · 摘要与引言
+  针对随机截断造成的单步退化，适合优先学习如何在少步预算下保留复杂运动和镜头变化。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：多步蒸馏的随机梯度截断可能退化为单步能力并削弱运动。
+  - **方法**：按信噪比子区间逐阶段训练专家，在中间噪声分布上构造正确的评分匹配目标。
+  - **价值**：兼顾梯度内存预算、多样性和复杂相机动态。
+  - **局限**：引入分阶段专家管理；公开入口主要提供推理实现与模型。
+
+  来源：<a href="https://arxiv.org/abs/2510.27684">[1]</a> · <a href="https://github.com/ModelTC/LightX2V-Wan2.2-Lightning">[2]</a> · <a href="https://huggingface.co/lightx2v/Wan2.2-Lightning/tree/main/Wan2.2-T2V-A14B-4steps-lora-250928">[3]</a> · <a href="https://openaccess.thecvf.com/content/CVPR2026/html/Fan_Phased_DMD_Few-step_Distribution_Matching_Distillation_via_Score_Matching_within_CVPR_2026_paper.html">[4]</a> · <a href="https://openaccess.thecvf.com/content/CVPR2026/papers/Fan_Phased_DMD_Few-step_Distribution_Matching_Distillation_via_Score_Matching_within_CVPR_2026_paper.pdf">[5]</a> · <a href="https://x-niper.github.io/projects/Phased-DMD">[6]</a>
+  核验：2026-10-14
+
+  </details>
+
++ [Large Scale Diffusion Distillation via Score-Regularized Continuous-Time Consistency](<https://arxiv.org/abs/2510.08431>)<br>
+  [![Star](https://img.shields.io/github/stars/NVlabs/rcm.svg?style=social&label=Star)](<https://github.com/NVlabs/rcm>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2510.08431>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://research.nvidia.com/labs/dir/rcm>)
+  <br>2025-10-09 · JVP / 分数正则 / 多样性 / 少步生成 / 连续一致性
+
+  **[ICLR 2026](<https://arxiv.org/abs/2510.08431>)** · **P0 必读** · 摘要与引言
+  建立覆盖模式与追求保真度的互补视角，值得作为比较后续 DMD 改进的基础；仓库另含 Causal-rCM。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：连续一致性蒸馏扩展到大型视频模型时面临导数计算和细节质量问题。
+  - **方法**：实现可并行的注意力雅可比向量积，并以分数蒸馏作为长跨度正则。
+  - **价值**：结合前向覆盖与反向匹配，平衡少步生成的质量和多样性。
+  - **局限**：所读版本主要验证短视频；仓库后续因果扩展不能混作本文结论。
+
+  来源：<a href="https://arxiv.org/abs/2510.08431">[1]</a> · <a href="https://arxiv.org/pdf/2510.08431v3">[2]</a> · <a href="https://github.com/NVlabs/rcm">[3]</a> · <a href="https://research.nvidia.com/labs/dir/rcm">[4]</a>
+  核验：2026-10-14
 
   </details>
 
@@ -274,6 +414,86 @@
 
   来源：<a href="https://arxiv.org/abs/2412.07772">[1]</a> · <a href="https://arxiv.org/pdf/2412.07772">[2]</a> · <a href="https://causvid.github.io/">[3]</a> · <a href="https://github.com/tianweiy/CausVid">[4]</a> · <a href="https://huggingface.co/tianweiy/CausVid/tree/main/autoregressive_checkpoint">[5]</a>
   核验：2026-10-13
+
+  </details>
+
++ [PDMD: Projected Distribution Matching Distillation for Video Diffusion Models](<https://arxiv.org/abs/2609.35768>)<br>
+  [![Star](https://img.shields.io/github/stars/ZeamoxWang/pdmd.svg?style=social&label=Star)](<https://github.com/ZeamoxWang/pdmd>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2609.35768>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://pdmd2026.github.io/>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/pdmd2026/pdmd_4NFE_full>)
+  <br>2026-09-28 · DMD / critic误差 / 梯度投影 / 过饱和 / 音视频生成
+
+  **arXiv 预印本（录用待核实）** · **P1 重点** · 摘要与引言
+  适合在现有蒸馏系统中快速检验 critic 误差假设，并与 SGMD 的更新机制改造对照。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：评分网络误差会随学生更新积累，导致过饱和与纹理伪影。
+  - **方法**：以学生和评分网络的端点残差估计误差方向，投影去除匹配更新中沿该方向的分量。
+  - **价值**：无需新增网络、损失或模型调用即可稳定视频蒸馏。
+  - **局限**：信号保留分析依赖高维集中与弱对齐假设，并非无条件无损。
+
+  来源：<a href="https://arxiv.org/abs/2609.35768">[1]</a> · <a href="https://arxiv.org/pdf/2609.35768v1">[2]</a> · <a href="https://github.com/ZeamoxWang/pdmd">[3]</a> · <a href="https://huggingface.co/pdmd2026/pdmd_4NFE_full">[4]</a> · <a href="https://pdmd2026.github.io/">[5]</a>
+  核验：2026-10-14
+
+  </details>
+
++ [Diversity-Preserved Distribution Matching Distillation for Fast Visual Synthesis](<https://arxiv.org/abs/2602.03139>)<br>
+  [![Star](https://img.shields.io/github/stars/Multimedia-Analytics-Laboratory/dpdmd.svg?style=social&label=Star)](<https://github.com/Multimedia-Analytics-Laboratory/dpdmd>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2602.03139>)
+  <br>2026-02-03 · DMD / 图像生成 / 多样性 / 梯度隔离 / 阶段分工
+
+  **[ICML 2026](<https://proceedings.mlr.press/v306/wu26ag.html>)** · **P1 重点** · 摘要与引言
+  首步负责多样性、后续负责质量的分工值得迁移研究，但论文证据主要来自图像任务。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：少步分布匹配会降低样本多样性，额外感知或对抗正则增加负担。
+  - **方法**：首步学习教师预测目标，后续步骤优化分布匹配，并截断其回传至首步的梯度。
+  - **价值**：以功能分工保留全局结构变化和局部画质。
+  - **局限**：验证主要是文生图；在视频中保持运动多样性仍需单独检验。
+
+  来源：<a href="https://arxiv.org/abs/2602.03139">[1]</a> · <a href="https://arxiv.org/pdf/2602.03139v2">[2]</a> · <a href="https://github.com/Multimedia-Analytics-Laboratory/dpdmd">[3]</a> · <a href="https://proceedings.mlr.press/v306/wu26ag.html">[4]</a>
+  核验：2026-10-14
+
+  </details>
+
++ [Adversarial Distribution Matching for Diffusion Distillation Towards Efficient Image and Video Synthesis](<https://arxiv.org/abs/2507.18569>)<br>
+  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2507.18569>)
+  <br>2025-07-24 · 单步生成 / 对抗匹配 / 模式覆盖 / 蒸馏初始化
+
+  **[ICCV 2025 Highlight](<https://arxiv.org/abs/2507.18569>)** · **P1 重点** · 摘要与引言
+  作为学习分布差异的另一条路线，重点比较其初始化与模式覆盖假设，以及对抗训练代价。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：固定反向散度易丢失模式，极少步蒸馏还受师生分布重叠不足限制。
+  - **方法**：对抗匹配真实与伪评分网络的潜预测，并用潜空间和像素判别器预训练生成器。
+  - **价值**：将更好初始化与后续匹配统一为 DMDX，支持图像及视频加速。
+  - **局限**：需要额外判别器与分阶段训练，当前未核实官方代码入口。
+
+  来源：<a href="https://arxiv.org/abs/2507.18569">[1]</a> · <a href="https://arxiv.org/pdf/2507.18569v1">[2]</a>
+  核验：2026-10-14
+
+  </details>
+
++ [Learning Few-Step Diffusion Models by Trajectory Distribution Matching](<https://arxiv.org/abs/2503.06674>)<br>
+  [![Star](https://img.shields.io/github/stars/Luo-Yihong/TDM.svg?style=social&label=Star)](<https://github.com/Luo-Yihong/TDM>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2503.06674>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://tdm-t2x.github.io/>)
+  <br>2025-03-09 · 无数据蒸馏 / 步数条件 / 确定性采样 / 轨迹分布匹配
+
+  **[ICCV 2025](<https://openaccess.thecvf.com/content/ICCV2025/html/Luo_Learning_Few-Step_Diffusion_Models_by_Trajectory_Distribution_Matching_ICCV_2025_paper.html>)** · **P1 重点** · 摘要与引言
+  用于补齐轨迹匹配与分布匹配的联系，并理解可调步数监督；实时自回归系统需额外设计。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：单步分布匹配缺少步数灵活性，逐样本轨迹回归又难以兼顾质量。
+  - **方法**：在各时间点对齐师生轨迹分布，并用步数感知目标分离不同采样预算。
+  - **价值**：提供确定性少步采样与可调步数的统一蒸馏视角。
+  - **局限**：主要围绕图像展开并扩展至短视频，未解决长时缓存与交互反馈。
+
+  来源：<a href="https://arxiv.org/abs/2503.06674">[1]</a> · <a href="https://arxiv.org/pdf/2503.06674v2">[2]</a> · <a href="https://github.com/Luo-Yihong/TDM">[3]</a> · <a href="https://openaccess.thecvf.com/content/ICCV2025/html/Luo_Learning_Few-Step_Diffusion_Models_by_Trajectory_Distribution_Matching_ICCV_2025_paper.html">[4]</a> · <a href="https://tdm-t2x.github.io/">[5]</a>
+  核验：2026-10-14
 
   </details>
 
@@ -686,6 +906,26 @@
 
   </details>
 
++ [LaMo: Self-Supervised Latent Motion Priors for Physical Realism in Video Generation](<https://arxiv.org/abs/2605.23878>)<br>
+  [![Star](https://img.shields.io/github/stars/Applied-Intuition-Open-Source/LaMo.svg?style=social&label=Star)](<https://github.com/Applied-Intuition-Open-Source/LaMo>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2605.23878>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://lamo-ai.github.io/>)
+  <br>2026-05-22 · 潜空间 / 物理一致性 / 自监督 / 运动先验 / 采样引导
+
+  **[NeurIPS 2026](<https://lamo-ai.github.io/>)** · **P0 必读** · 摘要与引言
+  从普通视频提取物理运动监督，直接对应视频生成的物理可靠性，也可作为世界模型训练约束的候选。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：逐像素去噪目标容易忽略决定物理演化的帧间运动。
+  - **方法**：从无标注视频潜变量差分学习运动先验，以宏观漂移损失训练、微观运动场引导采样。
+  - **价值**：无需物理标注或模拟器即可补充动态监督。
+  - **局限**：运动合理性不保证满足物理定律，长时闭环模拟仍需验证。
+
+  来源：<a href="https://arxiv.org/abs/2605.23878">[1]</a> · <a href="https://arxiv.org/pdf/2605.23878v1">[2]</a> · <a href="https://github.com/Applied-Intuition-Open-Source/LaMo">[3]</a> · <a href="https://lamo-ai.github.io/">[4]</a>
+  核验：2026-10-14
+
+  </details>
+
 + [WorldCompass: Reinforcement Learning for Long-Horizon World Models](<https://arxiv.org/abs/2602.09022>)<br>
   [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2602.09022>)
   <br>2026-02-09 · 世界模型 / 动作控制 / 强化学习 / 长时一致性
@@ -829,6 +1069,46 @@
 
   </details>
 
++ [LongCat-Video-Avatar 1.5 Technical Report](<https://arxiv.org/abs/2605.26486>)<br>
+  [![Star](https://img.shields.io/github/stars/meituan-longcat/LongCat-Video.svg?style=social&label=Star)](<https://github.com/meituan-longcat/LongCat-Video>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2605.26486>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.5>)
+  <br>2026-05-26 · GRPO / 少步蒸馏 / 数据治理 / 身份一致性 / 长视频 / 音频驱动
+
+  **arXiv 预印本（录用待核实）** · **P0 必读** · 摘要与引言
+  优先学习数据治理、偏好优化到蒸馏的完整配方，直接服务复杂场景 Avatar 的稳定性与部署。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：音频驱动人像在长视频、多人和手物交互中仍易失稳。
+  - **方法**：以数据筛选和规模化训练为基础，采用大音频编码器，先做偏好优化再蒸馏到八次网络评估。
+  - **价值**：提供兼顾口型、身份与场景鲁棒性的系统配方。
+  - **局限**：重点是工程整合；少步推理本身不能证明低延迟闭环交互。
+
+  来源：<a href="https://arxiv.org/abs/2605.26486">[1]</a> · <a href="https://arxiv.org/pdf/2605.26486v1">[2]</a> · <a href="https://github.com/meituan-longcat/LongCat-Video">[3]</a> · <a href="https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.5">[4]</a> · <a href="https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page">[5]</a>
+  核验：2026-10-14
+
+  </details>
+
++ [SoulX-LiveAct: Towards Hour-Scale Real-Time Human Animation with Neighbor Forcing and ConvKV Memory](<https://arxiv.org/abs/2603.11746>)<br>
+  [![Star](https://img.shields.io/github/stars/Soul-AILab/SoulX-LiveAct.svg?style=social&label=Star)](<https://github.com/Soul-AILab/SoulX-LiveAct>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2603.11746>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://soul-ailab.github.io/soulx-liveact>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/Soul-AILab/LiveAct>)
+  <br>2026-03-12 · KV缓存 / Neighbor Forcing / 实时交互 / 记忆压缩 / 长视频 / 音频驱动
+
+  **arXiv 预印本（录用待核实）** · **P0 必读** · 摘要与引言
+  同噪声步历史条件与固定长度记忆直接连接实时 Avatar、长时一致性和世界模型的状态维护。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：自回归人像生成受历史噪声状态错配和缓存持续增长限制。
+  - **方法**：传递同一扩散步的邻近潜状态，并以一维卷积压缩历史键值，联合少步蒸馏。
+  - **价值**：将条件对齐与恒定内存结合，支持小时级流式动画。
+  - **局限**：实时结果依赖双卡高端硬件；压缩记忆不等于精确保存所有历史。
+
+  来源：<a href="https://arxiv.org/abs/2603.11746">[1]</a> · <a href="https://arxiv.org/pdf/2603.11746v2">[2]</a> · <a href="https://github.com/Soul-AILab/SoulX-LiveAct">[3]</a> · <a href="https://huggingface.co/Soul-AILab/LiveAct">[4]</a> · <a href="https://soul-ailab.github.io/soulx-liveact">[5]</a>
+  核验：2026-10-14
+
+  </details>
+
 + [StreamAvatar: Streaming Diffusion Models for Real-Time Interactive Human Avatars](<https://arxiv.org/abs/2512.22065>)<br>
   [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2512.22065>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://streamavatar.github.io/>)
   <br>2025-12-26 · Avatar / 实时交互 / 流式生成 / 长期一致性
@@ -886,6 +1166,26 @@
 
   来源：<a href="https://arxiv.org/abs/2508.07901">[1]</a> · <a href="https://arxiv.org/pdf/2508.07901">[2]</a> · <a href="https://github.com/WeChatCV/Stand-In">[3]</a> · <a href="https://openaccess.thecvf.com/content/CVPR2026/html/Xue_Stand-In_A_Lightweight_and_Plug-and-Play_Identity_Control_for_Video_Generation_CVPR_2026_paper.html">[4]</a>
   核验：2026-10-13
+
+  </details>
+
++ [FantasyTalking: Realistic Talking Portrait Generation via Coherent Motion Synthesis](<https://arxiv.org/abs/2504.04842>)<br>
+  [![Star](https://img.shields.io/github/stars/Fantasy-AMAP/fantasy-talking.svg?style=social&label=Star)](<https://github.com/Fantasy-AMAP/fantasy-talking>) [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](<https://arxiv.org/abs/2504.04842>) [![Project](https://img.shields.io/badge/Project-9cf.svg)](<https://fantasy-amap.github.io/fantasy-talking>) [![Weights](https://img.shields.io/badge/Weights-yellow.svg)](<https://huggingface.co/acvlab/FantasyTalking>)
+  <br>2025-04-07 · 全身动画 / 口型同步 / 身份一致性 / 运动控制 / 音频驱动
+
+  **[ACM MM 2025](<https://fantasy-amap.github.io/fantasy-talking>)** · **P1 重点** · 摘要与引言
+  重点学习全局动作与局部口型分阶段对齐，以及身份保持不压制动态的设计；实时系统需另行结合。
+
+  <details>
+  <summary>brief</summary>
+
+  - **问题**：只优化嘴部的说话人像缺少身体、背景与物体的协调运动。
+  - **方法**：先学习片段级音画动态，再以嘴部掩码精调帧级同步，并用面部交叉注意力和运动强度条件。
+  - **价值**：为全身人像提供身份保持与动作可控的分工思路。
+  - **局限**：引言未建立流式低延迟能力，不能直接视作实时交互方案。
+
+  来源：<a href="https://arxiv.org/abs/2504.04842">[1]</a> · <a href="https://arxiv.org/pdf/2504.04842v1">[2]</a> · <a href="https://fantasy-amap.github.io/fantasy-talking">[3]</a> · <a href="https://github.com/Fantasy-AMAP/fantasy-talking">[4]</a> · <a href="https://huggingface.co/acvlab/FantasyTalking">[5]</a>
+  核验：2026-10-14
 
   </details>
 
